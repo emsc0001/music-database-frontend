@@ -12,13 +12,10 @@
 </header>
 
 <main>
- <div class="search-container">
-    <h2>Search</h2>
-    <form id="search-form">
-        <input type="text" id="input-search-artist" placeholder="Search After Artist">
-        <button type="submit">Search</button>
-    </form>
-</div>
+
+
+
+
     
 
   <div>
@@ -39,10 +36,25 @@
           </select required> <br /><br /> 
         </div>
       </section>
+
+
+<div class="tab-buttons">
+    <button id="artists-tab" data-tabShow="artists">Artists</button>
+    <button id="albums-tab" data-tabShow="albums">Albums</button>
+    <button id="songs-tab" data-tabShow="songs">Songs</button>
+</div>
+
        
   <div class="result-container">
     <div class="artists-section">
         <h2>Artists</h2>
+         <div class="search-container">
+    <h2>Search</h2>
+    <form id="search-form">
+        <input type="text" id="input-search-artist" placeholder="Search After Artist">
+        <button type="submit">Search</button>
+    </form>
+</div>
         <div id="artist-results">
         </div>
     </div>
