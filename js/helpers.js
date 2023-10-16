@@ -1,7 +1,7 @@
 const endpoint = "http://localhost:3333";
 
 export { endpoint, inputSearchChanged, inputSearchChangedAlbum, inputSearchChangedSong };
-import { artists, albums, songs, displayAlbums, displayArtists, displaySongs } from "./frontend.js";
+import { artists, albums, songs } from "./frontend.js";
 
 // ----------- SEARCH ----------- //
 
