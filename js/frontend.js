@@ -32,7 +32,7 @@ async function artistApp() {
 }
 
 function initializeViews() {
-  artistsLists = new ListRenderer(artists, "#list tbody", ArtistRenderer);
+  artistsLists = new ListRenderer(artists, "#artist-container", ArtistRenderer);
   artistsLists.render();
 }
 
