@@ -14,7 +14,6 @@
     <main>
       <div>
         <!-- Sort-input -->
-
         <label for="sort-artist">Sort by:</label>
         <select name="sort-artist" id="sort-artist">
           <option value="">Not selected</option>
@@ -23,7 +22,6 @@
         </select>
 
         <!-- Filter-input -->
-
         <label for="filter-artist">Filter:</label>
         <select name="filter-artist" id="filter-artist">
           <option value="">Not selected</option>
@@ -43,39 +41,44 @@
         </div>
 
         <!-- Artists-search -->
+        <section id="artists" class="tab-content">
+          <div class="search-container">
+            <form id="search-form-artist">
+              <h2>Artists</h2>
+              <input type="text" id="input-search-artist" placeholder="Search After Artist" />
+              <button type="submit">Search</button>
+            </form>
+          </div>
 
-        <div class="search-container">
-          <form id="search-form-artist">
-            <h2>Artists</h2>
-            <input type="text" id="input-search-artist" placeholder="Search After Artist" />
-            <button type="submit">Search</button>
-          </form>
-        </div>
+          <table id="list">
+            <tbody>
+              <!-- Artists template will be copied and inserted here -->
+            </tbody>
+          </table>
+        </section>
       </div>
 
       <!-- Album-search -->
+      <section id="albums" class="tab-content">
+        <div class="search-container">
+          <form id="search-form-album">
+            <h2>Albums</h2>
+            <input type="text" id="input-search-album" placeholder="Search After Albums" />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+      </section>
 
-      <div class="search-container">
-        <form id="search-form-album">
-          <h2>Albums</h2>
-          <input type="text" id="input-search-album" placeholder="Search After Albums" />
-          <button type="submit">Search</button>
-        </form>
-      </div>
-
-      <!--Songs-search -->
-
-      <div class="search-container">
-        <form id="search-form-song">
-          <h2>Songs</h2>
-          <input type="text" id="input-search-song" placeholder="Search After Songs" />
-          <button type="submit">Search</button>
-        </form>
-      </div>
-
-      <section id="artists" class="tab-content"></section>
-      <section id="albums" class="tab-content"></section>
-      <section id="songs" class="tab-content"></section>
+      <!-- Songs-search -->
+      <section id="songs" class="tab-content">
+        <div class="search-container">
+          <form id="search-form-song">
+            <h2>Songs</h2>
+            <input type="text" id="input-search-song" placeholder="Search After Songs" />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+      </section>
     </main>
 
     <footer>

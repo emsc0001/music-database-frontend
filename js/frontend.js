@@ -1,5 +1,5 @@
 "use strict";
-import { endpoint, getAlbums, getArtists, getSongs } from "./rest-service.js";
+import { endpoint } from "./rest-service.js";
 import * as RESTAPI from "./rest-service.js";
 import { inputSearchChanged, inputSearchChangedAlbum, inputSearchChangedSong } from "./helpers.js";
 import ListRenderer from "./view/listrenderer.js";
@@ -23,16 +23,16 @@ window.addEventListener("load", artistApp);
 
 async function artistApp() {
   console.log("Velkommen til Musik Databasen!");
-  artists = await RESTAPI.getArtists();
-  albums = await RESTAPI.getAlbums();
-  songs = await RESTAPI.getSongs();
+  artists = await RESTAPI.getAllArtists();
+  // albums = await RESTAPI.getAlbums();
+  // songs = await RESTAPI.getSongs();
 
   // create views
   initializeViews();
 }
 
 function initializeViews() {
-  artistsLists = new ListRenderer(artists, "search-form-artist", ArtistRenderer);
+  artistsLists = new ListRenderer(artists, "#list tbody", ArtistRenderer);
   artistsLists.render();
 }
 

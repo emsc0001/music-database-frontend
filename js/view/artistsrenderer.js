@@ -1,9 +1,9 @@
 import ItemRenderer from "./itemrenderer.js";
 
 export default class ArtistRenderer extends ItemRenderer {
-    render() {
-        const artist = this.item;
-        const html = /*html*/ `
+  render() {
+    const artist = this.item;
+    const html = /*html*/ `
             <article class="grid-item">
                 <img src= "${artist.images}"/>
                 <div class="grid-info">
@@ -12,11 +12,10 @@ export default class ArtistRenderer extends ItemRenderer {
             </div>
             <div class="btns">
                 <button class="btn-update">Update</button>
-                <button class="btn-delete">Delete</button>    
+                <button class="btn-delete">Delete🗑️</button>    
              </div>
     </article>
   `;
-        return html;
-    }
-
+    return html;
+  }
 }
