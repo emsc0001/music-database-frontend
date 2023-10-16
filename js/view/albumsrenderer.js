@@ -1,6 +1,6 @@
 import ItemRenderer from "./itemrenderer.js";
 
-export default class albumRenderer extends ItemRenderer {
+export default class AlbumRenderer extends ItemRenderer {
   render() {
     const albums = this.item;
     const html = /*html*/ `

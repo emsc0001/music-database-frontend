@@ -1,11 +1,15 @@
 "use strict";
 import artists from "./model/artists.js";
+import albums from "./model/albums.js";
+import songs from "./model/songs.js";
 
-export { endpoint, getAllArtists };
+export { endpoint, getAllArtists, getAllAlbums, getAllSongs };
 
 const endpoint = "http://localhost:3333";
 
 let allArtists = [];
+let allAlbums = [];
+let allSongs = [];
 let lastFetch = 0;
 
 async function getAllArtists() {
@@ -24,6 +28,44 @@ async function refetchAllArtists() {
   const response = await fetch(`${endpoint}/artists`);
   const originalJson = await response.json();
   allArtists = originalJson.map((jsonObj) => new artists(jsonObj));
+
+  lastFetch = Date.now();
+}
+
+async function getAllAlbums() {
+  const now = Date.now();
+  const timePassedSinceLastFetch = now - lastFetch;
+  // Only fetch if more than 10 seconds has passed since last fetch
+  if (timePassedSinceLastFetch > 10_000) {
+    // <- hardcoded time - should maybe be something different
+    await refetchAllAlbums();
+  }
+
+  return allAlbums;
+}
+async function refetchAllAlbums() {
+  const response = await fetch(`${endpoint}/albums`);
+  const originalJson = await response.json();
+  allAlbums = originalJson.map((jsonObj) => new albums(jsonObj));
+
+  lastFetch = Date.now();
+}
+
+async function getAllSongs() {
+  const now = Date.now();
+  const timePassedSinceLastFetch = now - lastFetch;
+  // Only fetch if more than 10 seconds has passed since last fetch
+  if (timePassedSinceLastFetch > 10_000) {
+    // <- hardcoded time - should maybe be something different
+    await refetchAllSongs();
+  }
+
+  return allSongs;
+}
+async function refetchAllSongs() {
+  const response = await fetch(`${endpoint}/songs`);
+  const originalJson = await response.json();
+  allSongs = originalJson.map((jsonObj) => new songs(jsonObj));
 
   lastFetch = Date.now();
 }

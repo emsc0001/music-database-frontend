@@ -74,4 +74,13 @@ export default class ListRenderer {
     // and re-render the list
     this.render();
   }
+
+  filter(filterProperty, filterValue) {
+    // simply remember the settings
+    this.filterProperty = filterProperty;
+    this.filterValue = filterValue;
+
+    // and re-render the list - this will do the actual filtering
+    this.render();
+  }
 }

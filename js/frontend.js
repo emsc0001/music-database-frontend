@@ -4,6 +4,8 @@ import * as RESTAPI from "./rest-service.js";
 import { inputSearchChanged, inputSearchChangedAlbum, inputSearchChangedSong } from "./helpers.js";
 import ListRenderer from "./view/listrenderer.js";
 import ArtistRenderer from "./view/artistsrenderer.js";
+import AlbumRenderer from "./view/albumsrenderer.js";
+import SongsRenderer from "./view/songsrenderer.js";
 import { initTabs } from "./tabs.js";
 export { artists, albums, songs };
 
@@ -16,24 +18,30 @@ let songs = [];
 
 // views
 let artistsLists = null;
-// let albumsLists = null;
-// let songsLists = null;
+let albumsLists = null;
+let songsLists = null;
 
 window.addEventListener("load", artistApp);
 
 async function artistApp() {
   console.log("Velkommen til Musik Databasen!");
   artists = await RESTAPI.getAllArtists();
-  // albums = await RESTAPI.getAlbums();
-  // songs = await RESTAPI.getSongs();
+  albums = await RESTAPI.getAllAlbums();
+  songs = await RESTAPI.getAllSongs();
 
   // create views
   initializeViews();
 }
 
 function initializeViews() {
-  artistsLists = new ListRenderer(artists, "#artist-container", ArtistRenderer);
+  artistsLists = new ListRenderer(artists, "#artists-container", ArtistRenderer);
   artistsLists.render();
+
+  albumsLists = new ListRenderer(albums, "#albums-container", AlbumRenderer);
+  albumsLists.render();
+
+  songsLists = new ListRenderer(songs, "#songs-container", SongsRenderer);
+  songsLists.render();
 }
 
 initTabs();
