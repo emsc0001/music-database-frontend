@@ -1,12 +1,14 @@
 "use strict";
-
 import { endpoint, getAlbums, getArtists, getSongs } from "./rest-service.js";
+
 import { inputSearchChanged, inputSearchChangedAlbum, inputSearchChangedSong } from "./helpers.js";
+import ListRenderer from "./view/listrenderer.js";
+import ArtistRendererRenderer from "./view/artistsrenderer.js";
 // import { initTabs } from "./tabs.js";
 export { artists, albums, songs, displayArtists, displayAlbums, displaySongs };
 
 endpoint;
-let artists;
+let artists = [];
 let albums;
 let songs;
 window.addEventListener("load", artistApp);
@@ -18,17 +20,7 @@ async function artistApp() {
   await getSongs();
   updateGrid();
 
-  //Searchbar Artister Sort
-  document.querySelector("#input-search-artist").addEventListener("keyup", inputSearchChanged);
-  document.querySelector("#input-search-artist").addEventListener("search", inputSearchChanged);
 
-  //Searchbar Albums Sort
-  document.querySelector("#input-search-album").addEventListener("keyup", inputSearchChangedAlbum);
-  document.querySelector("#input-search-album").addEventListener("search", inputSearchChangedAlbum);
-
-  //Searchbar Songs Sort
-  document.querySelector("#input-search-song").addEventListener("keyup", inputSearchChangedSong);
-  document.querySelector("#input-search-song").addEventListener("search", inputSearchChangedSong);
 }
 
 // initTabs();
@@ -47,29 +39,14 @@ async function updateGrid() {
 
 //------------------- Get Artists  ----------------------//
 
-function displayArtists(listOfArtist) {
-  document.querySelector("#artists").innerHTML = "";
-  for (const artist of listOfArtist) {
-    showArtists(artist);
-  }
-}
+// function displayArtists(listOfArtist) {
+//   document.querySelector("#artists").innerHTML = "";
+//   for (const artist of listOfArtist) {
+//     showArtists(artist);
+//   }
+// }
 
-function showArtists(artistObject) {
-  const html = /*html*/ `
-    <article class="grid-item">
-      <img src= "${artistObject.images}"/>
-      <div class="grid-info">
-        <h2>${artistObject.name}</h2>
-        <h3>${artistObject.genres}</h3>
-      </div>
-      <div class="btns">
-        <button class="btn-update">Update</button>
-        <button class="btn-delete">Delete</button>    
-      </div>
-    </article>
-  `;
-  document.querySelector("#artists").insertAdjacentHTML("beforeend", html);
-}
+
 
 //------------------- Get Albums  ----------------------//
 function displayAlbums(listOfAlbums) {
