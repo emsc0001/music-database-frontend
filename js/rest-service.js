@@ -11,6 +11,8 @@ let allArtists = [];
 let allAlbums = [];
 let allSongs = [];
 let lastFetch = 0;
+let lastFetch1 = 0;
+let lastFetch2 = 0;
 
 async function getAllArtists() {
   const now = Date.now();
@@ -20,7 +22,6 @@ async function getAllArtists() {
     // <- hardcoded time - should maybe be something different
     await refetchAllArtists();
   }
-
   return allArtists;
 }
 
@@ -33,41 +34,61 @@ async function refetchAllArtists() {
 }
 
 async function getAllAlbums() {
-  const now = Date.now();
-  const timePassedSinceLastFetch = now - lastFetch;
-  // Only fetch if more than 10 seconds has passed since last fetch
-  if (timePassedSinceLastFetch > 10_000) {
-    // <- hardcoded time - should maybe be something different
-    await refetchAllAlbums();
+  try {
+    const now = Date.now();
+    const timePassedSinceLastFetch = now - lastFetch1;
+    // Only fetch if more than 10 seconds has passed since the last fetch
+    if (timePassedSinceLastFetch > 10_000) {
+      await refetchAllAlbums();
+    }
+    return allAlbums;
+  } catch (error) {
+    console.error("Error fetching albums:", error);
+    throw error; // Rethrow the error for further handling
   }
-
-  return allAlbums;
 }
-async function refetchAllAlbums() {
-  const response = await fetch(`${endpoint}/albums`);
-  const originalJson = await response.json();
-  allAlbums = originalJson.map((jsonObj) => new albums(jsonObj));
 
-  lastFetch = Date.now();
+async function refetchAllAlbums() {
+  try {
+    const response = await fetch(`${endpoint}/albums`);
+    const originalJson = await response.json();
+    allAlbums = originalJson.map((jsonObj) => new albums(jsonObj)); // Use the correct class name
+    lastFetch1 = Date.now();
+  } catch (error) {
+    console.error("Error refetching albums:", error);
+    throw error; // Rethrow the error for further handling
+  }
 }
 
 async function getAllSongs() {
-  const now = Date.now();
-  const timePassedSinceLastFetch = now - lastFetch;
-  // Only fetch if more than 10 seconds has passed since last fetch
-  if (timePassedSinceLastFetch > 10_000) {
-    // <- hardcoded time - should maybe be something different
-    await refetchAllSongs();
+  try {
+    const now = Date.now();
+    const timePassedSinceLastFetch = now - lastFetch2;
+
+    // Only fetch if more than 10 seconds has passed since the last fetch
+    if (timePassedSinceLastFetch > 10_000) {
+      await refetchAllSongs();
+    }
+
+    return allSongs;
+  } catch (error) {
+    console.error("Error fetching songs:", error);
+    // You can handle the error here, such as showing a message to the user.
+    // Return an empty array or some default value, depending on your application's logic.
+    return [];
   }
-
-  return allSongs;
 }
-async function refetchAllSongs() {
-  const response = await fetch(`${endpoint}/songs`);
-  const originalJson = await response.json();
-  allSongs = originalJson.map((jsonObj) => new songs(jsonObj));
 
-  lastFetch = Date.now();
+async function refetchAllSongs() {
+  try {
+    const response = await fetch(`${endpoint}/songs`);
+    const originalJson = await response.json();
+    allSongs = originalJson.map((jsonObj) => new songs(jsonObj));
+    lastFetch2 = Date.now();
+  } catch (error) {
+    console.error("Error refetching songs:", error);
+    // You can handle the error here, such as showing a message to the user.
+  }
 }
 
 // async function getArtists() {

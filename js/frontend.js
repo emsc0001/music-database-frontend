@@ -29,6 +29,9 @@ async function artistApp() {
   albums = await RESTAPI.getAllAlbums();
   songs = await RESTAPI.getAllSongs();
 
+  console.log("Number of artists:", artists.length);
+  console.log("Number of albums:", albums.length);
+  console.log("Number of songs:", songs.length);
   // create views
   initializeViews();
 }
