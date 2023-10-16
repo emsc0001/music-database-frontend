@@ -10,6 +10,7 @@
     <header>
       <h1>Musik Databasen</h1>
     </header>
+
     <main>
       <div>
         <label for="sort-artist">Sort by:</label>
@@ -28,46 +29,48 @@
           <option value="k-pop">K-pop</option>
         </select>
       </div>
-      <div class="tab-buttons">
-        <button id="artists-tab" data-tabShow="artists">Artists</button>
-        <button id="albums-tab" data-tabShow="albums">Albums</button>
-        <button id="songs-tab" data-tabShow="songs">Songs</button>
-      </div>
-      <div class="result-container">
-        <div class="artists-section">
-          <div class="search-container">
-            <h2>Artists</h2>
-            <form id="search-form">
-              <input type="text" id="input-search-artist" placeholder="Search After Artist" />
-              <button type="submit">Search</button>
-            </form>
-          </div>
-          <div id="artist-results"></div>
+
+      <div class="tab-search-wrapper">
+        <div class="tab-buttons">
+          <button id="artists-tab" data-tabShow="artists">Artists</button>
+          <button id="albums-tab" data-tabShow="albums">Albums</button>
+          <button id="songs-tab" data-tabShow="songs">Songs</button>
         </div>
-        <section id="artists" class="grid-container"></section>
-        <div class="albums-section">
-          <h2>Albums</h2>
-          <form id="search-album-form">
-            <input type="text" id="input-search-album" placeholder="Search After Albums" />
+
+        <div class="search-container">
+          <h2>Artists</h2>
+          <form id="search-form-artist">
+            <input type="text" id="input-search-artist" placeholder="Search After Artist" />
             <button type="submit">Search</button>
           </form>
-          <div id="album-results"></div>
         </div>
-        <section id="albums" class="grid-container"></section>
-        <div class="songs-section">
-          <h2>Songs</h2>
-          <form id="search-song-form">
-            <input type="text" id="input-search-song" placeholder="Search After Songs" />
-            <button type="submit">Search</button>
-          </form>
-          <div id="songs-results"></div>
-        </div>
-        <section id="songs" class="grid-container"></section>
       </div>
+
+      <div class="search-container">
+        <h2>Albums</h2>
+        <form id="search-form-album">
+          <input type="text" id="input-search-album" placeholder="Search After Albums" />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+
+      <div class="search-container">
+        <h2>Songs</h2>
+        <form id="search-form-song">
+          <input type="text" id="input-search-song" placeholder="Search After Songs" />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+
+      <section id="artists" class="tab-content"></section>
+      <section id="albums" class="tab-content"></section>
+      <section id="songs" class="tab-content"></section>
     </main>
+
     <footer>
       <p>&copy; 2023 by AEM</p>
     </footer>
+
     <script src="js/frontend.js" type="module"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@
 
 import { endpoint, getAlbums, getArtists, getSongs } from "./rest-service.js";
 import { inputSearchChanged, inputSearchChangedAlbum, inputSearchChangedSong } from "./helpers.js";
-// import { initTabs } from "./tabs.js";
+import { initTabs } from "./tabs.js";
 export { artists, albums, songs, displayArtists, displayAlbums, displaySongs };
 
 endpoint;
@@ -31,7 +31,7 @@ async function artistApp() {
   document.querySelector("#input-search-song").addEventListener("search", inputSearchChangedSong);
 }
 
-// initTabs();
+initTabs();
 
 //-------------------Update Grid----------------------//
 
