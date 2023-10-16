@@ -238,3 +238,22 @@ footer {
 #songs-results {
   margin-top: 10px;
 }
+
+/* TABS SECTION */
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tab-buttons button {
+  background-color: #333;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tab-buttons button:hover {
+  background-color: #ccc;
+}
