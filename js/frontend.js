@@ -9,33 +9,42 @@ export { artists, albums, songs, displayArtists, displayAlbums, displaySongs };
 
 endpoint;
 let artists = [];
-let albums;
-let songs;
+let albums = [];
+let songs = [];
+
+let artistList = null;
+let createDialog = null;
+let updateDialog = null;
+let confirmDialog = null;
 window.addEventListener("load", artistApp);
 
 async function artistApp() {
   console.log("Velkommen til Musik Databasen!");
-  await getArtists();
-  await getAlbums();
-  await getSongs();
-  updateGrid();
+  
+    artists = await getArtists();
+    albums = await getAlbums();
+    songs = await getSongs();
 
 
 }
 
 initTabs();
 
+function initializeViews() {
+
+}
+
 //-------------------Update Grid----------------------//
 
-async function updateGrid() {
-  artists = await getArtists();
-  albums = await getAlbums();
-  songs = await getSongs();
-  displayArtists(artists);
-  displayAlbums(albums);
-  displaySongs(songs);
-  console.log(artists);
-}
+// async function updateGrid() {
+//   artists = await getArtists();
+//   albums = await getAlbums();
+//   songs = await getSongs();
+//   displayArtists(artists);
+//   displayAlbums(albums);
+//   displaySongs(songs);
+//   console.log(artists);
+// }
 
 //------------------- Get Artists  ----------------------//
 
