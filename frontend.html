@@ -13,12 +13,17 @@
 
     <main>
       <div>
+        <!-- Sort-input -->
+
         <label for="sort-artist">Sort by:</label>
         <select name="sort-artist" id="sort-artist">
           <option value="">Not selected</option>
           <option value="name">Name</option>
           <option value="birthdate">Birthdate</option>
         </select>
+
+        <!-- Filter-input -->
+
         <label for="filter-artist">Filter:</label>
         <select name="filter-artist" id="filter-artist">
           <option value="">Not selected</option>
@@ -37,6 +42,8 @@
           <button id="songs-tab" data-tabShow="songs">Songs</button>
         </div>
 
+        <!-- Artists-search -->
+
         <div class="search-container">
           <form id="search-form-artist">
             <h2>Artists</h2>
@@ -46,6 +53,8 @@
         </div>
       </div>
 
+      <!-- Album-search -->
+
       <div class="search-container">
         <form id="search-form-album">
           <h2>Albums</h2>
@@ -53,6 +62,8 @@
           <button type="submit">Search</button>
         </form>
       </div>
+
+      <!--Songs-search -->
 
       <div class="search-container">
         <form id="search-form-song">
