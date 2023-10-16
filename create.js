@@ -1,6 +1,9 @@
 "use strict";
 
-import { createArtist, createAlbum, createSong } from './backend';
+import { createArtist, createAlbum, createSong } from '';
+
+
+
 
 // Function for creating artists
 function CreateArtistDialog(event) {
