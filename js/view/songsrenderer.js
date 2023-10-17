@@ -11,8 +11,8 @@ export default class SongRenderer extends ItemRenderer {
      <h3>${songs.length}</h3>
       </div>
       <div class="btns">
-        <button class="btn-update">Update</button>
-        <button class="btn-delete">Delete</button>    
+      <button class="btn-update">Update⚙️</button>
+      <button class="btn-delete">Delete🗑️</button>       
       </div>
     </article>
   `;

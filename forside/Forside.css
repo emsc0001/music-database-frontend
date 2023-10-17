@@ -66,7 +66,23 @@ footer {
   padding: 10px 0;
 }
 
-/* Media query for responsiveness */
+.recommended-album {
+  display: inline-block;
+  width: 45%;
+  margin: 10px;
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.recommended-album:hover {
+  transform: scale(1.02);
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 1.5rem;
@@ -79,4 +95,34 @@ footer {
   .start-button {
     font-size: 0.9rem;
   }
+
+  .recommended-album {
+    display: block;
+    width: 100%;
+  }
+}
+
+.recommended-album img {
+  max-width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.recommended-album img:hover {
+  transform: scale(1.1);
+}
+
+.star-rating {
+  font-size: 24px;
+}
+
+.star {
+  font-size: 1.5em; /* Adjust the size of the emoji stars */
+  transition: text-shadow 0.3s; /* Add a transition for text-shadow */
+}
+
+.star:hover {
+  cursor: pointer;
+  text-shadow: 0 0 15px #000000; /* Add a glowing text-shadow effect */
 }

@@ -174,6 +174,10 @@ footer {
   background-color: #444;
 }
 
+.grid-item .btn-delete button:hover {
+  background-color: rgb(255, 97, 97);
+}
+
 /* ARTISTS SECTION */
 
 .artists-section {
