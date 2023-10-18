@@ -5,7 +5,6 @@ import songs from "../model/songs.js";
 import * as controller from "../frontend.js";
 
 class ArtistUpdateDialog extends Dialog {
-
     renderHTML() {
         const html =
             /*HTML*/
@@ -15,7 +14,7 @@ class ArtistUpdateDialog extends Dialog {
         <label for="update-artist-birthdate">Birthdate:</label> <input type="date" id="update-artist-birthdate" name="birthdate" >
         <label for="update-artist-genres">Genres:</label> <input type="text" id="update-artist-genres" name="genres" placeholder="pop, rap, soul, grime......">
         <label for="update-artist-description">Description:</label> <input type="text" id="update-artist-description" name="description">
-        <label for="update-artist-image">Image:</label> <input type="image" id="update-artist-image" name="image">
+        <label for="update-artist-image">Image:</label> <input type="text" id="update-artist-image" name="image">
         <button data-action="update">Update</button>
       </form>`;
 
@@ -30,7 +29,6 @@ class ArtistUpdateDialog extends Dialog {
         form.genres.value = artist.genres;
         form.description.value = artist.description;
         form.image.value = artist.image;
-
     }
 
     update() {
@@ -49,7 +47,6 @@ class ArtistUpdateDialog extends Dialog {
 }
 
 class AlbumUpdateDialog extends Dialog {
-
     renderHTML() {
         const html =
             /*HTML*/
@@ -83,7 +80,6 @@ class AlbumUpdateDialog extends Dialog {
 }
 
 class SongUpdateDialog extends Dialog {
-
     renderHTML() {
         const html =
             /*HTML*/
@@ -91,7 +87,7 @@ class SongUpdateDialog extends Dialog {
         <form action="" method="dialog" id="update-form">
         <label for="update-song-title">Song title:</label> <input type="text" id="update-song-title" name="title" placeholder="The song title - e.g. in da club">
         <label for="update-song-release-date">Release Date:</label> <input type="date" id="update-song-release-date" name="releaseDate" >
-        <label for="update-song-length">Length (MM:SS):</label><input type="text" id="update-song-length" name="length" placeholder="MM:SS" />
+        <label for="update-song-length">Length (MM:SS):</label><input type="text" id="update-song-length" name="length" placeholder="03:22" />
         <button data-action="update">Update</button>
       </form>`;
 
@@ -119,4 +115,4 @@ class SongUpdateDialog extends Dialog {
     }
 }
 
-export default {SongUpdateDialog, ArtistUpdateDialog, AlbumUpdateDialog}
+export default { SongUpdateDialog, ArtistUpdateDialog, AlbumUpdateDialog };

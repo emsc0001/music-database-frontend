@@ -14,7 +14,7 @@ class ArtistCreateDialog extends Dialog {
         <label for="create-artist-birthdate">Birthdate:</label> <input type="date" id="create-artist-birthdate" name="birthdate" >
         <label for="create-artist-genres">Genres:</label> <input type="text" id="create-artist-genres" name="genres" placeholder="pop, rap, soul, grime......">
         <label for="create-artist-description">Description:</label> <input type="text" id="create-artist-description" name="description">
-        <label for="create-artist-image">Image:</label> <input type="image" id="create-artist-image" name="image">
+        <label for="create-artist-image">Image:</label> <input type="text" id="create-artist-image" name="image">
         <button data-action="create">Create</button>
       </form>`;
 
@@ -83,7 +83,7 @@ class ArtistCreateDialog extends Dialog {
         <form action="" method="dialog" id="create-form">
         <label for="create-song-title">Song title:</label> <input type="text" id="create-song-title" name="title" placeholder="The song title - e.g. in da club">
         <label for="create-song-release-date">Release Date:</label> <input type="date" id="create-song-release-date" name="releaseDate" >
-        <label for="create-song-length">Length (MM:SS):</label><input type="text" id="create-song-length" name="length" placeholder="MM:SS" />
+        <label for="create-song-length">Length (MM:SS):</label><input type="text" id="create-song-length" name="length" placeholder="03:22" />
         <button data-action="create">Create</button>
       </form>`;
 
