@@ -70,7 +70,7 @@ function initializeViews() {
     updateArtistDialog = new ArtistUpdateDialog("artist-update-dialog");
     updateArtitstDialog.render();
 
-  deleteArtistDialog = new AlbumDeleteDialog("artist-delete-dialog");
+    deleteArtistDialog = new ArtistDeleteDialog("artist-delete-dialog");
   
     // album dialog-components
     createAlbumDialog = new AlbumCreateDialog("album-create-dialog");
