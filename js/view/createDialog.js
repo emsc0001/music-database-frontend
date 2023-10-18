@@ -1,5 +1,7 @@
 import Dialog from "./dialog.js";
 import artists from "../model/artists.js";
+import albums from "../model/albums.js";
+import songs from "../model/songs.js";
 import * as controller from "../frontend.js"
 
 class ArtistCreateDialog extends Dialog {
@@ -92,7 +94,7 @@ class ArtistCreateDialog extends Dialog {
     create() {
         // Build artist-object from form 
         const form = this.dialog.querySelector("form");
-            this.song = songs({
+            this.song = new songs({
             title: form.title.value,
             releaseDate: form.releaseDate.value,
             length: form.length.value,
