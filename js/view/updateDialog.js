@@ -94,7 +94,7 @@ class SongUpdateDialog extends Dialog {
         return html;
     }
 
-    setAlbum(song) {
+    setSong(song) {
         this.song = song;
         const form = this.dialog.querySelector("form");
         form.title.value = song.title;
