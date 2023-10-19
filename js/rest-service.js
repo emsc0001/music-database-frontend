@@ -3,7 +3,7 @@ import artists from "./model/artists.js";
 import albums from "./model/albums.js";
 import songs from "./model/songs.js";
 
-export { endpoint, getAllArtists, getAllAlbums, getAllSongs };
+export { endpoint, getAllArtists, getAllAlbums, getAllSongs, createArtist };
 
 const endpoint = "http://localhost:3333";
 
@@ -14,6 +14,9 @@ let lastFetch = 0;
 let lastFetch1 = 0;
 let lastFetch2 = 0;
 
+
+
+// -----ALL API with Artist-------- //
 async function getAllArtists() {
   const now = Date.now();
   const timePassedSinceLastFetch = now - lastFetch;
@@ -32,6 +35,25 @@ async function refetchAllArtists() {
 
   lastFetch = Date.now();
 }
+
+// Create Artist//
+
+async function createArtist(artist) {
+    const json = JSON.stringify(artist);
+    const response = await fetch(`${endpoint}/artists`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json,
+    });
+
+    await refetchAllArtists();
+    // NOTE: Should we return the newly created id?
+    return response.ok;
+}
+
+
 
 async function getAllAlbums() {
   try {

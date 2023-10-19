@@ -96,6 +96,15 @@ initTabs();
 
 // ------------- Controller -------------------//
 
+async function createArtist(artist) {
+  await RESTAPI.createArtist(artist);
+
+  artists = await RESTAPI.getAllArtists();
+  artistsLists.setList(artists);
+  artistsLists.render();
+}
+
+
 
 
 
