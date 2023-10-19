@@ -108,40 +108,14 @@ function initializeViews() {
 
   // initialize delete-button
   document
-    .querySelectorAll("[data-action='deleteArtist1']")
+    .querySelectorAll("[data-action='deleteArtist']")
     .forEach((button) => button.addEventListener("click", deleteArtistDialog.show.bind(deleteArtistDialog)));
-
-  //   document.querySelectorAll("[data-action='deleteArtist1']").forEach((button) => button.addEventListener("click", deleteArtistDialog));
 
   // initialize update-button
 
   document
     .querySelectorAll("[data-action='updateArtist']")
     .forEach((button) => button.addEventListener("click", updateArtistDialog.show.bind(updateArtistDialog)));
-  // initialize Show Dialog for Artists
-  const artistDialogElement = document.getElementById("artist-details-dialog");
-
-  if (artistDialogElement) {
-    artistDialogElement.addEventListener("click", () => {
-      createArtistDialog.show();
-      console.log("Create Artist Dialog Opened");
-    });
-  }
-
-  // initialize create-button for Artists
-  document
-    .querySelectorAll("[data-action='create1']")
-    .forEach((button) => button.addEventListener("click", createArtistDialog.show.bind(createArtistDialog)));
-
-  // initialize create-button for Albums
-  document
-    .querySelectorAll("[data-action='create2']")
-    .forEach((button) => button.addEventListener("click", createAlbumDialog.show.bind(createAlbumDialog)));
-
-  // initialize create-button for Songs
-  document
-    .querySelectorAll("[data-action='create3']")
-    .forEach((button) => button.addEventListener("click", createSongDialog.show.bind(createSongDialog)));
 
   // Usage for creating the artist dropdown
   populateDropdown("#create-album-artist", artists);

@@ -12,7 +12,7 @@ export default class ArtistRenderer extends ItemRenderer {
             </div>
             <div class="btns">
                 <button type="button" data-action="updateArtist">Update⚙️</button>
-                <button type="button">Delete🗑️</button>    
+                <button type="button" data-action="deleteArtist">Delete🗑️</button>    
              </div>
     </article>
   `;
