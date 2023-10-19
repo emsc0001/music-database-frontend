@@ -11,7 +11,7 @@ export default class ArtistRenderer extends ItemRenderer {
                 <h3>${artist.genres}</h3>
             </div>
             <div class="btns">
-                <button type="button">Update⚙️</button>
+                <button type="button" data-action="updateArtist">Update⚙️</button>
                 <button type="button">Delete🗑️</button>    
              </div>
     </article>

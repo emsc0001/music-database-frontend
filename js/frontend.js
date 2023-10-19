@@ -111,6 +111,14 @@ function initializeViews() {
   document
     .querySelectorAll("[data-action='deleteArtist1']")
     .forEach((button) => button.addEventListener("click", deleteArtistDialog.show.bind(deleteArtistDialog)));
+
+  //   document.querySelectorAll("[data-action='deleteArtist1']").forEach((button) => button.addEventListener("click", deleteArtistDialog));
+
+  // initialize update-button
+
+  document
+    .querySelectorAll("[data-action='updateArtist']")
+    .forEach((button) => button.addEventListener("click", updateArtistDialog.show.bind(updateArtistDialog)));
 }
 
 initTabs();
