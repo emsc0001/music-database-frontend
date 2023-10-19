@@ -3,7 +3,7 @@ import artists from "./model/artists.js";
 import albums from "./model/albums.js";
 import songs from "./model/songs.js";
 
-export { endpoint, getAllArtists, getAllAlbums, getAllSongs, createArtist, updateArtist, deleteArtist, createAlbum };
+export { endpoint, getAllArtists, getAllAlbums, getAllSongs, createArtist, updateArtist, deleteArtist, createAlbum, createSong };
 
 const endpoint = "http://localhost:3333";
 
@@ -81,7 +81,7 @@ async function deleteArtist(artist) {
     return response.ok;
 }
 
-// -----ALL API with Artist-------- //
+// -----ALL API with Albums-------- //
 
 async function getAllAlbums() {
   try {
@@ -126,6 +126,8 @@ async function createAlbum(album) {
 }
 
 
+// -----ALL API with songs-------- //
+
 async function getAllSongs() {
   try {
     const now = Date.now();
@@ -157,20 +159,18 @@ async function refetchAllSongs() {
   }
 }
 
-// async function getArtists() {
-//   const response = await fetch(`${endpoint}/artists`);
-//   const data = await response.json();
-//   return data;
-// }
 
-// async function getAlbums() {
-//   const response = await fetch(`${endpoint}/albums`);
-//   const data = await response.json();
-//   return data;
-// }
+async function createSong(song) {
+    const json = JSON.stringify(song);
+    const response = await fetch(`${endpoint}/songs`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json,
+    });
 
-// async function getSongs() {
-//   const response = await fetch(`${endpoint}/songs`);
-//   const data = await response.json();
-//   return data;
-// }
+    await refetchAllSongs();
+
+    return response.ok;
+}
