@@ -121,7 +121,35 @@ async function createArtist(artist) {
   artistsLists.render();
 }
 
+function selectArtistForUpdate(artist) {
+    updateArtistDialog.setArtist(artist);
+    updateArtistDialog.show();
+}
 
+async function updateArtist(artist) {
+    // call rest-api
+    await RESTAPI.updateArtist(artist);
+
+    // update list
+    artists = await RESTAPI.getAllArtists();
+    artistsLists.setList(artists);
+    artistsLists.render();
+}
+
+function confirmDeleteArtist(artist) {
+    deleteArtistDialog.setArtist(artist);
+    deleteArtistDialog.render();
+    deleteArtistDialog.show();
+}
+
+async function deleteArtist(artist) {
+    await RESTAPI.deleteArtist(artist);
+
+    // update list
+    artist = await RESTAPI.getAllArtists();
+    artistsLists.setList(artist);
+    artistsLists.render();
+}
 
 
 
@@ -193,4 +221,4 @@ async function createArtist(artist) {
 //   document.querySelector("#songs").insertAdjacentHTML("beforeend", html);
 // }
 
-export { artists, albums, songs, createArtist };
+export { artists, albums, songs, createArtist, selectArtistForUpdate, updateArtist, confirmDeleteArtist, deleteArtist };

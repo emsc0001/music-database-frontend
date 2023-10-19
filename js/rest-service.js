@@ -3,7 +3,7 @@ import artists from "./model/artists.js";
 import albums from "./model/albums.js";
 import songs from "./model/songs.js";
 
-export { endpoint, getAllArtists, getAllAlbums, getAllSongs, createArtist };
+export { endpoint, getAllArtists, getAllAlbums, getAllSongs, createArtist, updateArtist, deleteArtist };
 
 const endpoint = "http://localhost:3333";
 
@@ -50,6 +50,34 @@ async function createArtist(artist) {
 
     await refetchAllArtists();
     // NOTE: Should we return the newly created id?
+    return response.ok;
+}
+// Update Artist//
+
+async function updateArtist(artist) {
+    const json = JSON.stringify(artist);
+    const response = await fetch(`${endpoint}/${artist.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json,
+    });
+
+    await refetchAllArtists();
+
+    return response.ok;
+}
+
+// Delete Artist//
+
+async function deleteArtist(artist) {
+    const response = await fetch(`${endpoint}/${artist.id}`, {
+        method: "DELETE",
+    });
+
+    await refetchAllArtists();
+
     return response.ok;
 }
 
