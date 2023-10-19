@@ -47,7 +47,6 @@ class ArtistCreateDialog extends Dialog {
     controller.createArtist(this.artist);
   }
 }
-// -----SKAL HAVE GJORT SÅ KUNSTNER MED PÅ------ //
 class AlbumCreateDialog extends Dialog {
   renderHTML() {
     const html =
@@ -80,17 +79,23 @@ class AlbumCreateDialog extends Dialog {
     controller.createAlbum(this.album);
   }
 }
-// -----SKAL HAVE GJORT SÅ KUNSTNER og ALBUM KOMMER MED PÅ------ //
 class SongCreateDialog extends Dialog {
   renderHTML() {
     const html =
-      /*HTML*/
-      `<div class="dialog2">
+        /*HTML*/
+        `<div class="dialog2">
       <h1>Create Song</h1>
         <form action="" method="dialog" id="create-form">
         <label for="create-song-title">Song title:</label> <input type="text" id="create-song-title" name="title" placeholder="The song title - e.g. in da club">
         <label for="create-song-release-date">Release Date:</label> <input type="date" id="create-song-release-date" name="releaseDate" >
         <label for="create-song-length">Length (MM:SS):</label><input type="text" id="create-song-length" name="length" placeholder="03:22" />
+        <label for="create-song-artist">Artist:</label>
+        <select id="create-song-artist" name="artistId">
+          </select>
+          <label for="create-song-album">Album:</label>
+          <select id="create-song-album" name="albumId">
+          </select>
+
         <button data-action="create">Create</button>
         <button data-action="close">Close</button>
 
@@ -100,14 +105,15 @@ class SongCreateDialog extends Dialog {
     return html;
   }
 
-  // -------MANGLER EVT ID???--------- //
   create() {
     // Build artist-object from form
     const form = this.dialog.querySelector("form");
     this.song = new songs({
-      title: form.title.value,
-      releaseDate: form.releaseDate.value,
-      length: form.length.value,
+        title: form.title.value,
+        releaseDate: form.releaseDate.value,
+        length: form.length.value,
+        artistIds: [form.artistId.value],
+        albumIds: [form.albumId.value],
     });
 
     // clear form

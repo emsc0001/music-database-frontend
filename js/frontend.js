@@ -76,7 +76,6 @@ function initializeViews() {
   // album dialog-components
   createAlbumDialog = new AlbumCreateDialog("album-create-dialog");
   createAlbumDialog.render();
-  populateArtistDropdown();
 
   updateAlbumDialog = new AlbumUpdateDialog("album-update-dialog");
   updateAlbumDialog.render();
@@ -119,22 +118,57 @@ function initializeViews() {
   document
     .querySelectorAll("[data-action='updateArtist']")
     .forEach((button) => button.addEventListener("click", updateArtistDialog.show.bind(updateArtistDialog)));
+  // initialize Show Dialog for Artists
+  const artistDialogElement = document.getElementById("artist-details-dialog");
+
+  if (artistDialogElement) {
+    artistDialogElement.addEventListener("click", () => {
+      createArtistDialog.show();
+      console.log("Create Artist Dialog Opened");
+    });
+  }
+
+  // initialize create-button for Artists
+  document
+    .querySelectorAll("[data-action='create1']")
+    .forEach((button) => button.addEventListener("click", createArtistDialog.show.bind(createArtistDialog)));
+
+  // initialize create-button for Albums
+  document
+    .querySelectorAll("[data-action='create2']")
+    .forEach((button) => button.addEventListener("click", createAlbumDialog.show.bind(createAlbumDialog)));
+
+  // initialize create-button for Songs
+  document
+    .querySelectorAll("[data-action='create3']")
+    .forEach((button) => button.addEventListener("click", createSongDialog.show.bind(createSongDialog)));
+
+  // Usage for creating the artist dropdown
+  populateDropdown("#create-album-artist", artists);
+
+  // Usage for creating the album dropdown (if it exists)
+  populateDropdown("#create-song-artist", artists);
+  populateDropdown("#create-song-album", albums);
 }
 
 initTabs();
 
 // -----Fills the dropdown in Dialog----- //
 
-function populateArtistDropdown() {
-  const artistDropdown = document.querySelector("#create-album-artist");
-  if (!artistDropdown) return; // Ensure the dropdown exists
+function populateDropdown(selector, data) {
+  const dropdown = document.querySelector(selector);
 
-  // Iterate through your artists and create option elements
-  artists.forEach((artist) => {
+  if (!dropdown) return; // Ensure the dropdown exists
+
+  // Clear existing options
+  dropdown.innerHTML = "";
+
+  // Iterate through the data and create option elements
+  data.forEach((item) => {
     const option = document.createElement("option");
-    option.value = artist.id;
-    option.textContent = artist.name;
-    artistDropdown.appendChild(option);
+    option.value = item.id;
+    option.textContent = item.name || item.title; // Adjust this according to your data structure
+    dropdown.appendChild(option);
   });
 }
 
@@ -188,71 +222,14 @@ async function createAlbum(album) {
   albumsLists.render();
 }
 
-//-------------------Update Grid----------------------//
+// Songs
 
-// async function updateGrid() {
-//   artists = await getArtists();
-//   albums = await getAlbums();
-//   songs = await getSongs();
-//   console.log(artists);
-// }
+async function createSong(song) {
+  await RESTAPI.createSong(song);
 
-//------------------- Get Artists  ----------------------//
+  songs = await RESTAPI.getAllSongs();
+  songsLists.setList(songs);
+  songsLists.render();
+}
 
-// function displayArtists(listOfArtist) {
-//   document.querySelector("#artists").innerHTML = "";
-//   for (const artist of listOfArtist) {
-//     showArtists(artist);
-//   }
-// }
-
-//------------------- Get Albums  ----------------------//
-// function displayAlbums(listOfAlbums) {
-//   document.querySelector("#albums").innerHTML = "";
-//   for (const albums of listOfAlbums) {
-//     showAlbums(albums);
-//   }
-// }
-
-// function showAlbums(albumObject) {
-//   const html = /*html*/ `
-//     <article class="grid-item">
-//       <h1>${albumObject.title}</h1>
-//       <div class="grid-info">
-//         <h2>${albumObject.releaseDate}</h2>
-//       </div>
-//       <div class="btns">
-//         <button class="btn-update">Update</button>
-//         <button class="btn-delete">Delete</button>
-//       </div>
-//     </article>
-//   `;
-//   document.querySelector("#albums").insertAdjacentHTML("beforeend", html);
-// }
-
-// //------------------- Get Songs  ----------------------//
-// function displaySongs(listOfSongs) {
-//   document.querySelector("#songs").innerHTML = "";
-//   for (const songs of listOfSongs) {
-//     showSongs(songs);
-//   }
-// }
-
-// function showSongs(songsObject) {
-//   const html = /*html*/ `
-//     <article class="grid-item">
-//     <h1>${songsObject.title}</h1>
-//     <div class="grid-info">
-//     <h2>${songsObject.releaseDate}</h2>
-//      <h3>${songsObject.length}</h3>
-//       </div>
-//       <div class="btns">
-//         <button class="btn-update">Update</button>
-//         <button class="btn-delete">Delete</button>
-//       </div>
-//     </article>
-//   `;
-//   document.querySelector("#songs").insertAdjacentHTML("beforeend", html);
-// }
-
-export { artists, albums, songs, createArtist, selectArtistForUpdate, updateArtist, confirmDeleteArtist, deleteArtist, createAlbum };
+export { artists, albums, songs, createArtist, selectArtistForUpdate, updateArtist, confirmDeleteArtist, deleteArtist, createAlbum, createSong };
