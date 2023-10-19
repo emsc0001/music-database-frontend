@@ -101,15 +101,20 @@ function initializeViews() {
 
   deleteSongDialog = new SongDeleteDialog("song-delete-dialog");
 
-  // document.getElementById("btn-create-artist").addEventListener("click", () => {
-  //   // Open the dialog for creating a new artist
-  //   createArtistDialog.show();
-  // });
-
-  // initialize create-button
+  // initialize create-button for Artists
   document
-    .querySelectorAll("[data-action='create']")
+    .querySelectorAll("[data-action='create1']")
     .forEach((button) => button.addEventListener("click", createArtistDialog.show.bind(createArtistDialog)));
+
+  // initialize create-button for Albums
+  document
+    .querySelectorAll("[data-action='create2']")
+    .forEach((button) => button.addEventListener("click", createAlbumDialog.show.bind(createAlbumDialog)));
+
+  // initialize create-button for Songs
+  document
+    .querySelectorAll("[data-action='create3']")
+    .forEach((button) => button.addEventListener("click", createSongDialog.show.bind(createSongDialog)));
 }
 
 initTabs();
