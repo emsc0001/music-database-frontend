@@ -28,6 +28,18 @@ let artistsLists = null;
 let albumsLists = null;
 let songsLists = null;
 
+let createArtistDialog = null;
+let updateArtistDialog = null;
+let deleteArtistDialog = null;
+
+let createAlbumDialog = null;
+let updateAlbumDialog = null;
+let deleteAlbumDialog = null;
+
+let createSongDialog = null;
+let updateSongDialog = null;
+let deleteSongDialog = null;
+
 window.addEventListener("load", artistApp);
 
 async function artistApp() {
@@ -68,27 +80,32 @@ function initializeViews() {
     createArtistDialog.render();
 
     updateArtistDialog = new ArtistUpdateDialog("artist-update-dialog");
-    updateArtitstDialog.render();
+    updateArtistDialog.render();
 
     deleteArtistDialog = new ArtistDeleteDialog("artist-delete-dialog");
-  
+
     // album dialog-components
     createAlbumDialog = new AlbumCreateDialog("album-create-dialog");
-    createalbumDialog.render();
+    createAlbumDialog.render();
 
     updateAlbumDialog = new AlbumUpdateDialog("album-update-dialog");
     updateAlbumDialog.render();
 
     deleteAlbumDialog = new AlbumDeleteDialog("album-delete-dialog");
-  
+
     // SONG dialog-components
     createSongDialog = new SongCreateDialog("song-create-dialog");
-  createSongDialog.render();
+    createSongDialog.render();
 
     updateSongDialog = new SongUpdateDialog("song-update-dialog");
-    updateArtitstDialog.render();
+    updateSongDialog.render();
 
     deleteSongDialog = new SongDeleteDialog("song-delete-dialog");
+
+    // initialize create-button
+    document.querySelectorAll("[data-action='create-artist']").forEach((button) => button.addEventListener("click", () => createArtistDialog.show()));
+    document.querySelectorAll("[data-action='create-album']").forEach((button) => button.addEventListener("click", () => createAlbumDialog.show()));
+    document.querySelectorAll("[data-action='create-song']").forEach((button) => button.addEventListener("click", () => createSongDialog.show()));
 }
 
 initTabs();
@@ -104,6 +121,25 @@ async function createArtist(artist) {
   artistsLists.render();
 }
 
+function selectArtistForUpdate(artist) {
+    updateDialog.setArtist(artist);
+    updateDialog.show();
+}
+
+async function updateAnimal(animal) {
+    // call rest-api
+    await RESTAPI.updateAnimal(animal);
+
+    // update list
+    animals = await RESTAPI.getAllAnimals();
+    animalList.setList(animals);
+    animalList.render();
+}
+
+async function updateSingleProperty(animal, property) {
+    await RESTAPI.patchAnimal(animal, property, animal[property]);
+    // Do not re-render the entire list for a single property - expect the View to re-render itself!
+}
 
 
 
@@ -176,4 +212,4 @@ async function createArtist(artist) {
 //   document.querySelector("#songs").insertAdjacentHTML("beforeend", html);
 // }
 
-export { artists, albums, songs };
+export { artists, albums, songs, createArtist };
