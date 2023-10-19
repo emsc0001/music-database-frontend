@@ -64,16 +64,6 @@ function initializeViews() {
   songsLists = new ListRenderer(songs, "#songs-container", SongsRenderer);
   songsLists.render();
 
-  const artistItems = document.querySelectorAll("#artists-container article");
-  artistItems.forEach((artistItem, index) => {
-    artistItem.addEventListener("click", () => {
-      const selectedArtist = artists[index];
-      console.log("Artist Profile Opened");
-      const artistDialog = new ArtistShowDialog(selectedArtist);
-      artistDialog.show();
-    });
-  });
-
   // ARTIST dialog-components
   createArtistDialog = new ArtistCreateDialog("artist-create-dialog");
   createArtistDialog.render();
@@ -100,6 +90,16 @@ function initializeViews() {
   updateSongDialog.render();
 
   deleteSongDialog = new SongDeleteDialog("song-delete-dialog");
+
+  // initialize Show Dialog for Artists
+  const artistDialogElement = document.getElementById("artist-details-dialog");
+
+  if (artistDialogElement) {
+    artistDialogElement.addEventListener("click", () => {
+      createArtistDialog.show();
+      console.log("Create Artist Dialog Opened");
+    });
+  }
 
   // initialize create-button for Artists
   document
