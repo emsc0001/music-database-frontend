@@ -121,25 +121,6 @@ async function createArtist(artist) {
   artistsLists.render();
 }
 
-function selectArtistForUpdate(artist) {
-    updateDialog.setArtist(artist);
-    updateDialog.show();
-}
-
-async function updateAnimal(animal) {
-    // call rest-api
-    await RESTAPI.updateAnimal(animal);
-
-    // update list
-    animals = await RESTAPI.getAllAnimals();
-    animalList.setList(animals);
-    animalList.render();
-}
-
-async function updateSingleProperty(animal, property) {
-    await RESTAPI.patchAnimal(animal, property, animal[property]);
-    // Do not re-render the entire list for a single property - expect the View to re-render itself!
-}
 
 
 
