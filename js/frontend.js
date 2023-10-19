@@ -109,7 +109,7 @@ function initializeViews() {
 
   // initialize delete-button
   document
-    .querySelectorAll("[data-action='delete-btn']")
+    .querySelectorAll("[data-action='deleteArtist1']")
     .forEach((button) => button.addEventListener("click", deleteArtistDialog.show.bind(deleteArtistDialog)));
 }
 

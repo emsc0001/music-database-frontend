@@ -4,17 +4,18 @@ import albums from "../model/albums.js";
 import songs from "../model/songs.js";
 import * as controller from "../frontend.js";
 
-
 class ArtistDeleteDialog extends Dialog {
-  
   renderHTML() {
-    const html = /*HTML*/
-    `<h1>Delete Artist?</h1>
+    const html =
+      /*HTML*/
+      `<div class="dialog2">
+      <h1>Delete Artist?</h1>
       <p>Are you sure you want to delete the Artist "${this.artist.name}"?</p>
       <form action="" method="dialog" id="delete-form">
-        <button type="button" data-action="cancel">Cancel</button>
-        <button type="submit" data-action="delete">Delete</button>
-      </form>`
+        <button type="button" data-action="cancelConfirm1">Cancel</button>
+        <button type="submit" data-action="deleteConfirm1">Delete</button>
+      </form>
+    </div>`;
 
     return html;
   }
@@ -24,20 +25,21 @@ class ArtistDeleteDialog extends Dialog {
   }
 
   delete() {
-    controller.deleteArtist(this.artist);
+    if (this.artist) {
+      controller.deleteArtist(this.artist);
+    }
   }
-  
 }
 class AlbumDeleteDialog extends Dialog {
-  
   renderHTML() {
-    const html = /*HTML*/
-    `<h1>Delete Album?</h1>
+    const html =
+      /*HTML*/
+      `<h1>Delete Album?</h1>
       <p>Are you sure you want to delete the Album "${this.album.title}"?</p>
       <form action="" method="dialog" id="delete-form">
-        <button type="button" data-action="cancel">Cancel</button>
-        <button type="submit" data-action="delete">Delete</button>
-      </form>`
+        <button type="button" data-action="cancelConfirm2">Cancel</button>
+        <button type="submit" data-action="deleteConfirm2">Delete</button>
+      </form>`;
 
     return html;
   }
@@ -49,18 +51,17 @@ class AlbumDeleteDialog extends Dialog {
   delete() {
     controller.deleteAlbum(this.album);
   }
-  
 }
 class SongDeleteDialog extends Dialog {
-  
   renderHTML() {
-    const html = /*HTML*/
-    `<h1>Delete Song?</h1>
+    const html =
+      /*HTML*/
+      `<h1>Delete Song?</h1>
       <p>Are you sure you want to delete the Album "${this.song.title}"?</p>
       <form action="" method="dialog" id="delete-form">
-        <button type="button" data-action="cancel">Cancel</button>
-        <button type="submit" data-action="delete">Delete</button>
-      </form>`
+        <button type="button" data-action="cancelConfirm3">Cancel</button>
+        <button type="submit" data-action="deleteConfirm3">Delete</button>
+      </form>`;
 
     return html;
   }
@@ -72,7 +73,6 @@ class SongDeleteDialog extends Dialog {
   delete() {
     controller.deleteSong(this.song);
   }
-  
 }
 
-export {ArtistDeleteDialog, AlbumDeleteDialog, SongDeleteDialog}
+export { ArtistDeleteDialog, AlbumDeleteDialog, SongDeleteDialog };
