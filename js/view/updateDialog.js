@@ -115,4 +115,4 @@ class SongUpdateDialog extends Dialog {
     }
 }
 
-export default { SongUpdateDialog, ArtistUpdateDialog, AlbumUpdateDialog };
+export { SongUpdateDialog, ArtistUpdateDialog, AlbumUpdateDialog };

@@ -75,4 +75,4 @@ class SongDeleteDialog extends Dialog {
   
 }
 
-export default {ArtistDeleteDialog, AlbumDeleteDialog, SongDeleteDialog}
+export {ArtistDeleteDialog, AlbumDeleteDialog, SongDeleteDialog}

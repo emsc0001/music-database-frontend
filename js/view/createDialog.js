@@ -40,39 +40,37 @@ class ArtistCreateDialog extends Dialog {
     }
 
 }
-
+;
 // -----SKAL HAVE GJORT SÅ KUNSTNER MED PÅ------ //
   class AlbumCreateDialog extends Dialog {
-    
-    renderHTML() {
-        const html =
-            /*HTML*/
-            `<h1>Create Album</h1>
+      renderHTML() {
+          const html =
+              /*HTML*/
+              `<h1>Create Album</h1>
         <form action="" method="dialog" id="create-form">
         <label for="create-album-title">Album title:</label> <input type="text" id="create-album-title" name="title" placeholder="The album title - e.g. Get rich or die tyin'">
         <label for="create-album-release-date">Release date:</label> <input type="date" id="create-album-release-date" name="releaseDate" >
         <button data-action="create">Create</button>
       </form>`;
 
-            return html;
-    }
+          return html;
+      }
 
-    // -------MANGLER EVT ID???--------- //
-    create() {
-        // Build artist-object from form 
-        const form = this.dialog.querySelector("form");
-        this.album = new albums({
-            title: form.title.value,
-            releaseDate: form.releaseDate.value,
-        });
+      // -------MANGLER EVT ID???--------- //
+      create() {
+          // Build artist-object from form
+          const form = this.dialog.querySelector("form");
+          this.album = new albums({
+              title: form.title.value,
+              releaseDate: form.releaseDate.value,
+          });
 
-        // clear form
-        form.reset();
+          // clear form
+          form.reset();
 
-        controller.createAlbum(this.album);
-    }
-
-}
+          controller.createAlbum(this.album);
+      }
+  }
 // -----SKAL HAVE GJORT SÅ KUNSTNER og ALBUM KOMMER MED PÅ------ //
   class SongCreateDialog extends Dialog {
     
@@ -109,4 +107,4 @@ class ArtistCreateDialog extends Dialog {
 }
 
 
-export default {ArtistCreateDialog, AlbumCreateDialog, SongCreateDialog}
+export {ArtistCreateDialog, AlbumCreateDialog, SongCreateDialog}
