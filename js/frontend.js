@@ -15,7 +15,6 @@ import { ArtistDeleteDialog, AlbumDeleteDialog, SongDeleteDialog } from "./view/
 
 import { initTabs } from "./tabs.js";
 
-
 endpoint;
 
 //models
@@ -56,72 +55,64 @@ async function artistApp() {
 }
 
 function initializeViews() {
-    artistsLists = new ListRenderer(artists, "#artists-container", ArtistRenderer);
-    artistsLists.render();
+  artistsLists = new ListRenderer(artists, "#artists-container", ArtistRenderer);
+  artistsLists.render();
 
-    albumsLists = new ListRenderer(albums, "#albums-container", AlbumRenderer);
-    albumsLists.render();
+  albumsLists = new ListRenderer(albums, "#albums-container", AlbumRenderer);
+  albumsLists.render();
 
-    songsLists = new ListRenderer(songs, "#songs-container", SongsRenderer);
-    songsLists.render();
+  songsLists = new ListRenderer(songs, "#songs-container", SongsRenderer);
+  songsLists.render();
 
-    const artistItems = document.querySelectorAll("#artists-container article");
-    artistItems.forEach((artistItem, index) => {
-        artistItem.addEventListener("click", () => {
-            const selectedArtist = artists[index];
-            console.log("Artist Profile Opened");
-            const artistDialog = new ArtistShowDialog(selectedArtist);
-            artistDialog.show();
-        });
+  const artistItems = document.querySelectorAll("#artists-container article");
+  artistItems.forEach((artistItem, index) => {
+    artistItem.addEventListener("click", () => {
+      const selectedArtist = artists[index];
+      console.log("Artist Profile Opened");
+      const artistDialog = new ArtistShowDialog(selectedArtist);
+      artistDialog.show();
     });
+  });
 
-    // ARTIST dialog-components
-    createArtistDialog = new ArtistCreateDialog("artist-create-dialog");
-    createArtistDialog.render();
+  // ARTIST dialog-components
+  createArtistDialog = new ArtistCreateDialog("artist-create-dialog");
+  createArtistDialog.render();
 
-    updateArtistDialog = new ArtistUpdateDialog("artist-update-dialog");
-    updateArtistDialog.render();
+  updateArtistDialog = new ArtistUpdateDialog("artist-update-dialog");
+  updateArtistDialog.render();
 
-    deleteArtistDialog = new ArtistDeleteDialog("artist-delete-dialog");
+  deleteArtistDialog = new ArtistDeleteDialog("artist-delete-dialog");
 
-    // album dialog-components
-    createAlbumDialog = new AlbumCreateDialog("album-create-dialog");
-    createAlbumDialog.render();
+  // album dialog-components
+  createAlbumDialog = new AlbumCreateDialog("album-create-dialog");
+  createAlbumDialog.render();
 
-    updateAlbumDialog = new AlbumUpdateDialog("album-update-dialog");
-    updateAlbumDialog.render();
+  updateAlbumDialog = new AlbumUpdateDialog("album-update-dialog");
+  updateAlbumDialog.render();
 
-    deleteAlbumDialog = new AlbumDeleteDialog("album-delete-dialog");
+  deleteAlbumDialog = new AlbumDeleteDialog("album-delete-dialog");
 
-    // SONG dialog-components
-    createSongDialog = new SongCreateDialog("song-create-dialog");
-    createSongDialog.render();
+  // SONG dialog-components
+  createSongDialog = new SongCreateDialog("song-create-dialog");
+  createSongDialog.render();
 
-    updateSongDialog = new SongUpdateDialog("song-update-dialog");
-    updateSongDialog.render();
+  updateSongDialog = new SongUpdateDialog("song-update-dialog");
+  updateSongDialog.render();
 
-    deleteSongDialog = new SongDeleteDialog("song-delete-dialog");
+  deleteSongDialog = new SongDeleteDialog("song-delete-dialog");
 
-    // initialize create-button
-  document.querySelectorAll("[data-action='create']").forEach((button) => {
-    const action = button.getAttribute("data-action");
-    switch (action) {
-        case "create-artist":
-            button.addEventListener("click", () => createArtistDialog.show());
-            break;
-        case "create-album":
-            button.addEventListener("click", () => createAlbumDialog.show());
-            break;
-        case "create-song":
-            button.addEventListener("click", () => createSongDialog.show());
-            break;
-        // Add more cases for other "Create" actions if needed.
-    }
-});
+  // document.getElementById("btn-create-artist").addEventListener("click", () => {
+  //   // Open the dialog for creating a new artist
+  //   createArtistDialog.show();
+  // });
+
+  // initialize create-button
+  document
+    .querySelectorAll("[data-action='create']")
+    .forEach((button) => button.addEventListener("click", createArtistDialog.show.bind(createArtistDialog)));
 }
 
 initTabs();
-
 
 // ------------- Controller -------------------//
 
@@ -134,37 +125,34 @@ async function createArtist(artist) {
 }
 
 function selectArtistForUpdate(artist) {
-    updateArtistDialog.setArtist(artist);
-    updateArtistDialog.show();
+  updateArtistDialog.setArtist(artist);
+  updateArtistDialog.show();
 }
 
 async function updateArtist(artist) {
-    // call rest-api
-    await RESTAPI.updateArtist(artist);
+  // call rest-api
+  await RESTAPI.updateArtist(artist);
 
-    // update list
-    artists = await RESTAPI.getAllArtists();
-    artistsLists.setList(artists);
-    artistsLists.render();
+  // update list
+  artists = await RESTAPI.getAllArtists();
+  artistsLists.setList(artists);
+  artistsLists.render();
 }
 
 function confirmDeleteArtist(artist) {
-    deleteArtistDialog.setArtist(artist);
-    deleteArtistDialog.render();
-    deleteArtistDialog.show();
+  deleteArtistDialog.setArtist(artist);
+  deleteArtistDialog.render();
+  deleteArtistDialog.show();
 }
 
 async function deleteArtist(artist) {
-    await RESTAPI.deleteArtist(artist);
+  await RESTAPI.deleteArtist(artist);
 
-    // update list
-    artist = await RESTAPI.getAllArtists();
-    artistsLists.setList(artist);
-    artistsLists.render();
+  // update list
+  artist = await RESTAPI.getAllArtists();
+  artistsLists.setList(artist);
+  artistsLists.render();
 }
-
-
-
 
 //-------------------Update Grid----------------------//
 
