@@ -13,8 +13,8 @@ class ArtistUpdateDialog extends Dialog {
         <label for="update-artist-name">Artist Name:</label> <input type="text" id="update-artist-name" name="name" placeholder="The artist name - e.g. 50 cent">
         <label for="update-artist-birthdate">Birthdate:</label> <input type="date" id="update-artist-birthdate" name="birthdate" >
         <label for="update-artist-genres">Genres:</label> <input type="text" id="update-artist-genres" name="genres" placeholder="pop, rap, soul, grime......">
-        <label for="update-artist-description">Description:</label> <input type="text" id="update-artist-description" name="description">
-        <label for="update-artist-image">Image:</label> <input type="text" id="update-artist-image" name="image">
+        <label for="update-artist-description">Description:</label> <input type="text" id="update-artist-description" name="shortDescription">
+        <label for="update-artist-images">Image:</label> <input type="text" id="update-artist-images" name="images">
         <button data-action="update">Update</button>
       </form>`;
 
@@ -27,8 +27,8 @@ class ArtistUpdateDialog extends Dialog {
         form.name.value = artist.name;
         form.birthdate.value = artist.birthdate;
         form.genres.value = artist.genres;
-        form.description.value = artist.description;
-        form.image.value = artist.image;
+        form.shortDescription.value = artist.shortDescription;
+        form.images.value = artist.images;
     }
 
     update() {
@@ -37,8 +37,8 @@ class ArtistUpdateDialog extends Dialog {
         this.artist.name = form.name.value;
         this.artist.type = form.birthdate.value;
         this.artist.age = form.genres.value;
-        this.artist.description = form.description.value;
-        this.artist.image = form.image.value;
+        this.artist.shortDescription = form.shortDescription.value;
+        this.artist.images = form.images.value;
 
         console.log("Update artist", this.artist);
 

@@ -49,8 +49,8 @@ async function createArtist(artist) {
     });
 
     await refetchAllArtists();
-    // NOTE: Should we return the newly created id?
-    return response.ok;
+
+  return response.ok;
 }
 // Update Artist//
 
