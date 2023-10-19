@@ -3,7 +3,7 @@ import artists from "./model/artists.js";
 import albums from "./model/albums.js";
 import songs from "./model/songs.js";
 
-export { endpoint, getAllArtists, getAllAlbums, getAllSongs, createArtist, updateArtist, deleteArtist };
+export { endpoint, getAllArtists, getAllAlbums, getAllSongs, createArtist, updateArtist, deleteArtist, createAlbum };
 
 const endpoint = "http://localhost:3333";
 
@@ -81,7 +81,7 @@ async function deleteArtist(artist) {
     return response.ok;
 }
 
-
+// -----ALL API with Artist-------- //
 
 async function getAllAlbums() {
   try {
@@ -109,6 +109,22 @@ async function refetchAllAlbums() {
     throw error; // Rethrow the error for further handling
   }
 }
+
+async function createAlbum(album) {
+    const json = JSON.stringify(album);
+    const response = await fetch(`${endpoint}/albums`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: json,
+    });
+
+    await refetchAllAlbums();
+
+    return response.ok;
+}
+
 
 async function getAllSongs() {
   try {

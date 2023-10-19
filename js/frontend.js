@@ -76,6 +76,7 @@ function initializeViews() {
   // album dialog-components
   createAlbumDialog = new AlbumCreateDialog("album-create-dialog");
   createAlbumDialog.render();
+  populateArtistDropdown();
 
   updateAlbumDialog = new AlbumUpdateDialog("album-update-dialog");
   updateAlbumDialog.render();
@@ -119,8 +120,27 @@ function initializeViews() {
 
 initTabs();
 
+// -----Fills the dropdown in Dialog----- //
+
+function populateArtistDropdown() {
+  const artistDropdown = document.querySelector("#create-album-artist");
+  if (!artistDropdown) return; // Ensure the dropdown exists
+
+  // Iterate through your artists and create option elements
+  artists.forEach((artist) => {
+    const option = document.createElement("option");
+    option.value = artist.id;
+    option.textContent = artist.name;
+    artistDropdown.appendChild(option);
+  });
+}
+
+
+
+
 // ------------- Controller -------------------//
 
+// Artist
 async function createArtist(artist) {
   await RESTAPI.createArtist(artist);
 
@@ -157,6 +177,15 @@ async function deleteArtist(artist) {
   artist = await RESTAPI.getAllArtists();
   artistsLists.setList(artist);
   artistsLists.render();
+}
+
+// Albums
+async function createAlbum(album) {
+    await RESTAPI.createAlbum(album);
+
+    albums = await RESTAPI.getAllAlbums();
+    albumsLists.setList(albums);
+    albumsLists.render();
 }
 
 //-------------------Update Grid----------------------//
@@ -226,4 +255,4 @@ async function deleteArtist(artist) {
 //   document.querySelector("#songs").insertAdjacentHTML("beforeend", html);
 // }
 
-export { artists, albums, songs, createArtist, selectArtistForUpdate, updateArtist, confirmDeleteArtist, deleteArtist };
+export { artists, albums, songs, createArtist, selectArtistForUpdate, updateArtist, confirmDeleteArtist, deleteArtist, createAlbum };
