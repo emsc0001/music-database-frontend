@@ -92,30 +92,25 @@ function initializeViews() {
 
   deleteSongDialog = new SongDeleteDialog("song-delete-dialog");
 
-  // initialize Show Dialog for Artists
-  const artistDialogElement = document.getElementById("artist-details-dialog");
-
-  if (artistDialogElement) {
-    artistDialogElement.addEventListener("click", () => {
-      createArtistDialog.show();
-      console.log("Create Artist Dialog Opened");
-    });
-  }
-
   // initialize create-button for Artists
   document
-    .querySelectorAll("[data-action='create1']")
+    .querySelectorAll("[data-action='createArtist']")
     .forEach((button) => button.addEventListener("click", createArtistDialog.show.bind(createArtistDialog)));
 
   // initialize create-button for Albums
   document
-    .querySelectorAll("[data-action='create2']")
+    .querySelectorAll("[data-action='createAlbum']")
     .forEach((button) => button.addEventListener("click", createAlbumDialog.show.bind(createAlbumDialog)));
 
   // initialize create-button for Songs
   document
-    .querySelectorAll("[data-action='create3']")
+    .querySelectorAll("[data-action='createSong']")
     .forEach((button) => button.addEventListener("click", createSongDialog.show.bind(createSongDialog)));
+
+  // initialize delete-button
+  document
+    .querySelectorAll("[data-action='delete-btn']")
+    .forEach((button) => button.addEventListener("click", deleteArtistDialog.show.bind(deleteArtistDialog)));
 }
 
 initTabs();
@@ -134,9 +129,6 @@ function populateArtistDropdown() {
     artistDropdown.appendChild(option);
   });
 }
-
-
-
 
 // ------------- Controller -------------------//
 
@@ -181,11 +173,11 @@ async function deleteArtist(artist) {
 
 // Albums
 async function createAlbum(album) {
-    await RESTAPI.createAlbum(album);
+  await RESTAPI.createAlbum(album);
 
-    albums = await RESTAPI.getAllAlbums();
-    albumsLists.setList(albums);
-    albumsLists.render();
+  albums = await RESTAPI.getAllAlbums();
+  albumsLists.setList(albums);
+  albumsLists.render();
 }
 
 //-------------------Update Grid----------------------//
