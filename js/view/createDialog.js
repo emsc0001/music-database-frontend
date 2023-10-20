@@ -8,7 +8,7 @@ class ArtistCreateDialog extends Dialog {
   renderHTML() {
     const html =
       /*HTML*/
-      `<div">
+      `<div class="dialog-container">
         <h1>Create Artist</h1>
         <form action="" method="dialog" id="create-form">
           <label for="create-artist-name">Artist Name:</label>
@@ -19,7 +19,7 @@ class ArtistCreateDialog extends Dialog {
           <input type="text" id="create-artist-genres" name="genres" placeholder="pop, rap, soul, grime......">
           <label for="create-artist-description">Description:</label>
           <input type="text" id="create-artist-description" name="shortDescription">
-          <label for="create-artist-images">Imagesimages:</label>
+          <label for="create-artist-images">Images:</label>
           <input type="text" id="create-artist-images" name="images">
           <button data-action="create">Create</button>
           <button data-action="close">Close</button>
@@ -49,8 +49,8 @@ class ArtistCreateDialog extends Dialog {
 class AlbumCreateDialog extends Dialog {
   renderHTML() {
     const html =
-      /*HTML*/
-      `<div>
+        /*HTML*/
+        `<div class="dialog-container">
       <h1>Create Album</h1>
         <form action="" method="dialog" id="create-form">
           <label for="create-album-title">Album title:</label>
@@ -86,8 +86,8 @@ class AlbumCreateDialog extends Dialog {
 class SongCreateDialog extends Dialog {
   renderHTML() {
     const html =
-      /*HTML*/
-      `<div>
+        /*HTML*/
+        `<div class="dialog-container">
       <h1>Create Song</h1>
         <form action="" method="dialog" id="create-form">
         <label for="create-song-title">Song title:</label> <input type="text" id="create-song-title" name="title" placeholder="The song title - e.g. in da club">

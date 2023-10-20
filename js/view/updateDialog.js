@@ -7,8 +7,9 @@ import * as controller from "../frontend.js";
 class ArtistUpdateDialog extends Dialog {
   renderHTML() {
     const html =
-      /*HTML*/
-      `<h1>Update Artist</h1>
+        /*HTML*/
+        `<div class="dialog-container">
+      <h1>Update Artist</h1>
       <form action="" method="dialog" id="update-form">
         <label for="update-artist-name">Artist Name:</label> <input type="text" id="update-artist-name" name="name" placeholder="The artist name - e.g. 50 cent">
         <label for="update-artist-birthdate">Birthdate:</label> <input type="date" id="update-artist-birthdate" name="birthdate">
@@ -17,7 +18,7 @@ class ArtistUpdateDialog extends Dialog {
         <label for="update-artist-images">Image:</label> <input type="text" id="update-artist-images" name="images">
         <button  data-action="update">Update</button>
         <button data-action="close">Close</button>
-
+        </div>
       </form>`;
 
     return html;
@@ -78,14 +79,15 @@ class ArtistUpdateDialog extends Dialog {
 class AlbumUpdateDialog extends Dialog {
   renderHTML() {
     const html =
-      /*HTML*/
-      `<h1>Update album</h1>
+        /*HTML*/
+        `<div class="dialog-container">
+      <h1>Update album</h1>
         <form action="" method="dialog" id="update-form">
         <label for="update-album-title">Album title:</label> <input type="text" id="update-album-title" name="title" placeholder="The album title - e.g. Get rich or die tyin'">
         <label for="update-album-release-date">Release date:</label> <input type="date" id="update-album-release-date" name="releaseDate" >
         <button data-action="update">Update</button>
         <button data-action="close">Close</button>
-
+        </div>
       </form>`;
 
     return html;
@@ -135,10 +137,10 @@ class AlbumUpdateDialog extends Dialog {
 class SongUpdateDialog extends Dialog {
   renderHTML() {
     const html =
-      /*HTML*/
+        /*HTML*/
 
-      `<div class="dialog">
-
+        `<div class="dialog">
+    <div class="dialog-container">
       <h1>Update song</h1>
         <form action="" method="dialog" id="update-form">
         <label for="update-song-title">Song title:</label> <input type="text" id="update-song-title" name="title" placeholder="The song title - e.g. in da club">
@@ -147,6 +149,7 @@ class SongUpdateDialog extends Dialog {
         <button data-action="update">Update</button>
        <button data-action="close">Close</button>
       </form>
+      </div>
       </div>`;
 
     return html;

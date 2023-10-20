@@ -42,10 +42,10 @@ main {
 }
 
 form {
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 input[type="text"] {
@@ -258,113 +258,9 @@ footer {
   background-color: #ccc;
 }
 
-/* Dialog artist*/
-.dialog {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  transform: scale(1);
-  transition: transform 3s ease-in-out;
-}
-
-.dialog.show {
-  transform: scale(0.8); /* Return the dialog to its original size */
-}
-
-.dialog h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.dialog label {
-  display: block;
-  margin-top: 10px;
-}
-
-.dialog input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-}
-
-.dialog button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.dialog button:hover {
-  background-color: #444;
-}
-
-.dialog2 {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  transform: scale(1);
-  transition: transform 3s ease-in-out;
-}
-
-.dialog.show {
-  transform: scale(0.8); /* Return the dialog to its original size */
-}
-
-.dialog h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.dialog label {
-  display: block;
-  margin-top: 10px;
-}
-
-.dialog input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-}
-
-.dialog button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.dialog button:hover {
-  background-color: #444;
-}
-
-.dialog1 {
-  width: 100%;
+/* Dialog-container artist*/
+/* Common dialog-container styles
+.dialog-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -377,40 +273,93 @@ footer {
   transition: transform 3s ease-in-out;
 }
 
-.dialog.show {
-  transform: scale(0.8); /* Return the dialog to its original size */
-}
-
-.dialog h1 {
+/* Shared dialog-container content styles */
+/* .dialog-container h1 {
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-.dialog label {
+.dialog-container label {
   display: block;
   margin-top: 10px;
 }
 
-.dialog input {
+Make inputs display as block elements */
+/* .dialog-container input {
+  display: block;
   width: 100%;
   padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-}
+} */
 
-.dialog button {
+/* Buttons (Retain your color scheme) */
+/* .dialog-container button {
   width: 100%;
   padding: 10px;
   margin-top: 20px;
-  background-color: #333;
+  background-color: #007BFF;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.dialog button:hover {
-  background-color: #444;
+.dialog-container button:hover {
+  background-color: #0056b3;
+} */ 
+
+/* Common dialog-container styles */
+.dialog-container {
+  /* max-width: 600px; */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transform: scale(1);
+  transition: transform 3s ease-in-out;
 }
+
+/* Shared dialog-container content styles */
+.dialog-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.dialog-container label {
+  display: block;
+  margin-top: 10px;
+}
+
+/* Make inputs display as block elements and stack on top of each other */
+.dialog-container input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 2px 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Buttons (Retain your color scheme) */
+.dialog-container button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+
