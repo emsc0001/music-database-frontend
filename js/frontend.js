@@ -250,6 +250,15 @@ function confirmDeleteAlbum(album) {
   deleteAlbumDialog.show();
 }
 
+async function deleteAlbum(album) {
+  await RESTAPI.deleteAlbum(album);
+
+  // update list
+  albums = await RESTAPI.getAllAlbums();
+  albumsLists.setList(albums);
+  albumsLists.render();
+}
+
 // Songs
 
 async function createSong(song) {
@@ -286,6 +295,15 @@ function confirmDeleteSong(song) {
   deleteSongDialog.show();
 }
 
+async function deleteSong(song) {
+  await RESTAPI.deleteSong(song);
+
+  // update list
+  songs = await RESTAPI.getAllSongs();
+  songsLists.setList(songs);
+  songsLists.render();
+}
+
 export {
   artists,
   albums,
@@ -295,6 +313,8 @@ export {
   selectAlbumForUpdate,
   selectSongForUpdate,
   confirmDeleteAlbum,
+  deleteAlbum,
+  deleteSong,
   confirmDeleteSong,
   updateArtist,
   updateAlbum,

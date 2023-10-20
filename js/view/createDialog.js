@@ -7,8 +7,8 @@ import * as controller from "../frontend.js";
 class ArtistCreateDialog extends Dialog {
   renderHTML() {
     const html =
-        /*HTML*/
-        `<div class="dialog">
+      /*HTML*/
+      `<div class="dialog">
         <h1>Create Artist</h1>
         <form action="" method="dialog" id="create-form">
           <label for="create-artist-name">Artist Name:</label>
@@ -33,11 +33,11 @@ class ArtistCreateDialog extends Dialog {
     // Build artist-object from form
     const form = this.dialog.querySelector("form");
     this.artist = new artists({
-        name: form.name.value,
-        birthdate: form.birthdate.value,
-        genres: form.genres.value,
-        shortDescription: form.shortDescription.value,
-        images: form.images.value,
+      name: form.name.value,
+      birthdate: form.birthdate.value,
+      genres: form.genres.value,
+      shortDescription: form.shortDescription.value,
+      images: form.images.value,
     });
 
     // clear form
@@ -49,8 +49,8 @@ class ArtistCreateDialog extends Dialog {
 class AlbumCreateDialog extends Dialog {
   renderHTML() {
     const html =
-        /*HTML*/
-        `<div class="dialog1">
+      /*HTML*/
+      `<div class="dialog1">
       <h1>Create Album</h1>
         <form action="" method="dialog" id="create-form">
           <label for="create-album-title">Album title:</label>
@@ -72,9 +72,9 @@ class AlbumCreateDialog extends Dialog {
     // Build artist-object from form
     const form = this.dialog.querySelector("form");
     this.album = new albums({
-        title: form.title.value,
-        releaseDate: form.releaseDate.value,
-        artistIds: [form.artistId.value],
+      title: form.title.value,
+      releaseDate: form.releaseDate.value,
+      artistIds: [form.artistId.value],
     });
 
     // clear form
@@ -86,8 +86,8 @@ class AlbumCreateDialog extends Dialog {
 class SongCreateDialog extends Dialog {
   renderHTML() {
     const html =
-        /*HTML*/
-        `<div class="dialog2">
+      /*HTML*/
+      `<div class="dialog3">
       <h1>Create Song</h1>
         <form action="" method="dialog" id="create-form">
         <label for="create-song-title">Song title:</label> <input type="text" id="create-song-title" name="title" placeholder="The song title - e.g. in da club">
@@ -113,11 +113,11 @@ class SongCreateDialog extends Dialog {
     // Build artist-object from form
     const form = this.dialog.querySelector("form");
     this.song = new songs({
-        title: form.title.value,
-        releaseDate: form.releaseDate.value,
-        length: form.length.value,
-        artistIds: [form.artistId.value],
-        albumIds: [form.albumId.value],
+      title: form.title.value,
+      releaseDate: form.releaseDate.value,
+      length: form.length.value,
+      artistIds: [form.artistId.value],
+      albumIds: [form.albumId.value],
     });
 
     // clear form
