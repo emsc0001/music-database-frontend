@@ -8,7 +8,7 @@ class ArtistDeleteDialog extends Dialog {
   renderHTML() {
     const html =
       /*HTML*/
-      `<div class="dialog2">
+      `<div>
       <h1>Delete Artist?</h1>
       <p>Are you sure you want to delete the Artist "${this.artist.name}"?</p>
       <form action="" method="dialog" id="delete-form">
