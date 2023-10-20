@@ -21,7 +21,7 @@ export default class ArtistRenderer extends ItemRenderer {
   }
   postRender(element) {
     // Add eventListener to element
-    element.addEventListener("click", (event) => {
+    element.addEventListener("click", async (event) => {
       const action = event.target.dataset.action ?? "update";
       const artist = this.item;
 
@@ -29,6 +29,17 @@ export default class ArtistRenderer extends ItemRenderer {
         controller.selectArtistForUpdate(artist);
       } else if (action === "deleteArtist") {
         controller.confirmDeleteArtist(artist);
+      } else if (action === "changeName") {
+        // Simpel prompt for at hente det nye kunstnernavn fra brugeren
+        const newName = prompt("Indtast det nye kunstnernavn:");
+        if (newName) {
+          // Opdater kunstnerens navn
+          artist.name = newName;
+          // Kald metoden for at gemme ændringen i databasen
+          await controller.updateSingleArtistProperty(artist, "name", newName);
+          // Opdater visningen for kunstneren med det nye navn
+          this.rerender(element);
+        }
       }
     });
   }

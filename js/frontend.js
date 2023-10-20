@@ -195,8 +195,8 @@ async function updateArtist(artist) {
   artistsLists.render();
 }
 
-async function updateSingleArtistProperty(artist, property) {
-  await RESTAPI.patchArtist(artist, property, artist[property]);
+async function updateSingleArtistProperty(artist, property, value) {
+  await RESTAPI.patchArtist(artist, property, value);
   // Do not re-render the entire list for a single property - expect the View to re-render itself!
 }
 

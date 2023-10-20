@@ -10,6 +10,7 @@ export {
   getAllSongs,
   createArtist,
   updateArtist,
+  patchArtist,
   deleteArtist,
   createAlbum,
   updateAlbum,
@@ -81,6 +82,26 @@ async function updateArtist(artist) {
   return response.ok;
 }
 
+// Patch Artist//
+
+async function patchArtist(artist, property, value) {
+  const dataObject = {};
+  dataObject[property] = value;
+
+  const json = JSON.stringify(dataObject);
+  const response = await fetch(`${endpoint}/artists/${artist.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: json,
+  });
+
+  await refetchAllArtists();
+
+  return response.ok;
+}
+
 // Delete Artist//
 
 async function deleteArtist(artist) {
@@ -137,6 +158,8 @@ async function createAlbum(album) {
   return response.ok;
 }
 
+// Update Album//
+
 async function updateAlbum(album) {
   const json = JSON.stringify(album);
   const response = await fetch(`${endpoint}/albums/${album.id}`, {
@@ -179,8 +202,6 @@ async function getAllSongs() {
     return allSongs;
   } catch (error) {
     console.error("Error fetching songs:", error);
-    // You can handle the error here, such as showing a message to the user.
-    // Return an empty array or some default value, depending on your application's logic.
     return [];
   }
 }
@@ -212,6 +233,8 @@ async function createSong(song) {
   return response.ok;
 }
 
+// Update Song//
+
 async function updateSong(song) {
   const json = JSON.stringify(song);
   const response = await fetch(`${endpoint}/songs/${song.id}`, {
@@ -227,7 +250,7 @@ async function updateSong(song) {
   return response.ok;
 }
 
-// Delete Album//
+// Delete Song//
 
 async function deleteSong(song) {
   const response = await fetch(`${endpoint}/songs/${song.id}`, {
