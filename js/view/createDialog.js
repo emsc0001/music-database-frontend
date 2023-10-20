@@ -29,7 +29,6 @@ class ArtistCreateDialog extends Dialog {
     return html;
   }
 
-  // -------MANGLER EVT ID???--------- //
   create() {
     // Build artist-object from form
     const form = this.dialog.querySelector("form");
@@ -50,27 +49,32 @@ class ArtistCreateDialog extends Dialog {
 class AlbumCreateDialog extends Dialog {
   renderHTML() {
     const html =
-      /*HTML*/
-      `<div class="dialog1">
+        /*HTML*/
+        `<div class="dialog1">
       <h1>Create Album</h1>
         <form action="" method="dialog" id="create-form">
-        <label for="create-album-title">Album title:</label> <input type="text" id="create-album-title" name="title" placeholder="The album title - e.g. Get rich or die tyin'">
-        <label for="create-album-release-date">Release date:</label> <input type="date" id="create-album-release-date" name="releaseDate" >
-        <button data-action="create">Create</button>
-        <button data-action="close">Close</button>
-      </form>
+          <label for="create-album-title">Album title:</label>
+          <input type="text" id="create-album-title" name="title" placeholder="The album title - e.g. Get rich or die tyin'">
+          <label for="create-album-release-date">Release date:</label>
+          <input type="date" id="create-album-release-date" name="releaseDate">
+          <label for="create-album-artist">Artist:</label>
+          <select id="create-album-artist" name="artistId">
+          </select>
+          <button data-action="create">Create</button>
+          <button data-action="close">Close</button>
+        </form>
        </div>`;
 
     return html;
   }
 
-  // -------MANGLER EVT ID???--------- //
   create() {
     // Build artist-object from form
     const form = this.dialog.querySelector("form");
     this.album = new albums({
-      title: form.title.value,
-      releaseDate: form.releaseDate.value,
+        title: form.title.value,
+        releaseDate: form.releaseDate.value,
+        artistIds: [form.artistId.value],
     });
 
     // clear form
