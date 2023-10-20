@@ -8,7 +8,7 @@ class ArtistCreateDialog extends Dialog {
   renderHTML() {
     const html =
       /*HTML*/
-      `<div class="dialog">
+      `<div">
         <h1>Create Artist</h1>
         <form action="" method="dialog" id="create-form">
           <label for="create-artist-name">Artist Name:</label>
@@ -50,7 +50,7 @@ class AlbumCreateDialog extends Dialog {
   renderHTML() {
     const html =
       /*HTML*/
-      `<div class="dialog1">
+      `<div>
       <h1>Create Album</h1>
         <form action="" method="dialog" id="create-form">
           <label for="create-album-title">Album title:</label>
@@ -87,7 +87,7 @@ class SongCreateDialog extends Dialog {
   renderHTML() {
     const html =
       /*HTML*/
-      `<div class="dialog3">
+      `<div>
       <h1>Create Song</h1>
         <form action="" method="dialog" id="create-form">
         <label for="create-song-title">Song title:</label> <input type="text" id="create-song-title" name="title" placeholder="The song title - e.g. in da club">
