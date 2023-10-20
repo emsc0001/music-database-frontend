@@ -26,7 +26,6 @@ class ArtistUpdateDialog extends Dialog {
     this.artist = artist;
     const form = this.dialog.querySelector("form");
     form.name.value = artist.name;
-
     if (artist.birthdate) {
       const birthdate = new Date(artist.birthdate);
       if (!isNaN(birthdate)) {
@@ -96,7 +95,15 @@ class AlbumUpdateDialog extends Dialog {
     this.album = album;
     const form = this.dialog.querySelector("form");
     form.title.value = album.title;
-    form.releaseDate.value = album.releaseDate;
+    if (album.releaseDate) {
+      const releaseDate = new Date(album.releaseDate);
+      if (!isNaN(releaseDate)) {
+        const formattedreleaseDate = releaseDate.toISOString().split("T")[0];
+        form.releaseDate.value = formattedreleaseDate;
+      }
+    } else {
+      form.releaseDate.value = ""; // Tøm feltet, hvis fødselsdatoen er null
+    }
   }
 
   update() {
@@ -104,7 +111,21 @@ class AlbumUpdateDialog extends Dialog {
 
     this.album.title = form.title.value;
     this.album.releaseDate = form.releaseDate.value;
-
+    const releaseDateInput = form.releaseDate.value;
+    if (releaseDateInput) {
+      const releaseDate = new Date(releaseDateInput);
+      if (!isNaN(releaseDate)) {
+        // Hvis datoen er gyldig, konverter den til det ønskede format
+        const formattedreleaseDate = releaseDate.toISOString().split("T")[0];
+        this.album.releaseDate = formattedreleaseDate;
+      } else {
+        alert("Invalid date format. Please use 'yyyy-MM-dd'.");
+        return;
+      }
+    } else {
+      // Hvis inputtet er tomt, fjern fødselsdatoen
+      this.album.releaseDate = null;
+    }
     console.log("Update album", this.album);
 
     controller.updateAlbum(this.album);
@@ -135,7 +156,15 @@ class SongUpdateDialog extends Dialog {
     this.song = song;
     const form = this.dialog.querySelector("form");
     form.title.value = song.title;
-    form.releaseDate.value = song.releaseDate;
+    if (song.releaseDate) {
+      const releaseDate = new Date(song.releaseDate);
+      if (!isNaN(releaseDate)) {
+        const formattedreleaseDate = releaseDate.toISOString().split("T")[0];
+        form.releaseDate.value = formattedreleaseDate;
+      }
+    } else {
+      form.releaseDate.value = ""; // Tøm feltet, hvis fødselsdatoen er null
+    }
     form.length.value = song.length;
   }
 
@@ -143,7 +172,21 @@ class SongUpdateDialog extends Dialog {
     const form = this.dialog.querySelector("form");
 
     this.song.title = form.title.value;
-    this.song.releaseDate = form.releaseDate.value;
+    const releaseDateInput = form.releaseDate.value;
+    if (releaseDateInput) {
+      const releaseDate = new Date(releaseDateInput);
+      if (!isNaN(releaseDate)) {
+        // Hvis datoen er gyldig, konverter den til det ønskede format
+        const formattedreleaseDate = releaseDate.toISOString().split("T")[0];
+        this.song.releaseDate = formattedreleaseDate;
+      } else {
+        alert("Invalid date format. Please use 'yyyy-MM-dd'.");
+        return;
+      }
+    } else {
+      // Hvis inputtet er tomt, fjern fødselsdatoen
+      this.song.releaseDate = null;
+    }
     this.song.length = form.length.value;
 
     console.log("Update song", this.song);
