@@ -196,6 +196,11 @@ async function updateArtist(artist) {
   artistsLists.render();
 }
 
+async function updateSingleArtistProperty(artist, property) {
+  await RESTAPI.patchArtist(artist, property, artist[property]);
+  // Do not re-render the entire list for a single property - expect the View to re-render itself!
+}
+
 function confirmDeleteArtist(artist) {
   deleteArtistDialog.setArtist(artist);
   deleteArtistDialog.render();
@@ -225,6 +230,21 @@ function selectAlbumForUpdate(album) {
   updateAlbumDialog.show();
 }
 
+async function updateAlbum(album) {
+  // call rest-api
+  await RESTAPI.updateAlbum(album);
+
+  // update list
+  albums = await RESTAPI.getAllAlbums();
+  albumsLists.setList(albums);
+  albumsLists.render();
+}
+
+async function updateSingleAlbumProperty(album, property) {
+  await RESTAPI.patchArtist(album, property, album[property]);
+  // Do not re-render the entire list for a single property - expect the View to re-render itself!
+}
+
 function confirmDeleteAlbum(album) {
   updateAlbumDialog.setAlbum(album);
   updateAlbumDialog.render();
@@ -245,8 +265,24 @@ function selectSongForUpdate(song) {
   updateSongDialog.setSong(song);
   updateSongDialog.show();
 }
+
+async function updateSong(song) {
+  // call rest-api
+  await RESTAPI.updateSong(song);
+
+  // update list
+  songs = await RESTAPI.getAllSongs();
+  songsLists.setList(songs);
+  songsLists.render();
+}
+
+async function updateSingleSongProperty(song, property) {
+  await RESTAPI.patchArtist(song, property, song[property]);
+  // Do not re-render the entire list for a single property - expect the View to re-render itself!
+}
+
 function confirmDeleteSong(song) {
-  updateSongDialog.setArtist(song);
+  updateSongDialog.setSong(song);
   updateSongDialog.render();
   updateSongDialog.show();
 }
@@ -262,8 +298,13 @@ export {
   confirmDeleteAlbum,
   confirmDeleteSong,
   updateArtist,
+  updateAlbum,
+  updateSong,
   confirmDeleteArtist,
   deleteArtist,
   createAlbum,
   createSong,
+  updateSingleArtistProperty,
+  updateSingleAlbumProperty,
+  updateSingleSongProperty,
 };
