@@ -23,10 +23,20 @@ class ArtistUpdateDialog extends Dialog {
     return html;
   }
   setArtist(artist) {
-    this.artist = artist; // Tilføj lighedstegn for at tildel værdien af artist til this.artist
+    this.artist = artist;
     const form = this.dialog.querySelector("form");
     form.name.value = artist.name;
-    form.birthdate.value = artist.birthdate;
+
+    if (artist.birthdate) {
+      const birthdate = new Date(artist.birthdate);
+      if (!isNaN(birthdate)) {
+        const formattedBirthdate = birthdate.toISOString().split("T")[0];
+        form.birthdate.value = formattedBirthdate;
+      }
+    } else {
+      form.birthdate.value = ""; // Tøm feltet, hvis fødselsdatoen er null
+    }
+
     form.genres.value = artist.genres;
     form.shortDescription.value = artist.shortDescription;
     form.images.value = artist.images;
@@ -35,8 +45,27 @@ class ArtistUpdateDialog extends Dialog {
   update() {
     const form = this.dialog.querySelector("form");
 
+    if (!form.name.value) {
+      alert("Artist Name is required.");
+      return;
+    }
+
     this.artist.name = form.name.value;
-    this.artist.birthdate = form.birthdate.value;
+    const birthdateInput = form.birthdate.value;
+    if (birthdateInput) {
+      const birthdate = new Date(birthdateInput);
+      if (!isNaN(birthdate)) {
+        // Hvis datoen er gyldig, konverter den til det ønskede format
+        const formattedBirthdate = birthdate.toISOString().split("T")[0];
+        this.artist.birthdate = formattedBirthdate;
+      } else {
+        alert("Invalid date format. Please use 'yyyy-MM-dd'.");
+        return;
+      }
+    } else {
+      // Hvis inputtet er tomt, fjern fødselsdatoen
+      this.artist.birthdate = null;
+    }
     this.artist.genres = form.genres.value;
     this.artist.shortDescription = form.shortDescription.value;
     this.artist.images = form.images.value;
