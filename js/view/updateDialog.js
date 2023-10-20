@@ -22,9 +22,8 @@ class ArtistUpdateDialog extends Dialog {
 
     return html;
   }
-
   setArtist(artist) {
-    this.artist;
+    this.artist = artist; // Tilføj lighedstegn for at tildel værdien af artist til this.artist
     const form = this.dialog.querySelector("form");
     form.name.value = artist.name;
     form.birthdate.value = artist.birthdate;

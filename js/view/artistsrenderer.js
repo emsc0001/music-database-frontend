@@ -1,4 +1,5 @@
 import ItemRenderer from "./itemrenderer.js";
+import * as controller from "../frontend.js";
 
 export default class ArtistRenderer extends ItemRenderer {
   render() {
@@ -17,5 +18,20 @@ export default class ArtistRenderer extends ItemRenderer {
     </article>
   `;
     return html;
+  }
+  postRender(element) {
+    // Add eventListener to element
+    element.addEventListener("click", (event) => {
+      const action = event.target.dataset.action ?? "update";
+      const artist = this.item;
+
+      if (action === "updateArtist") {
+        // Tjek om action er "updateArtist"
+        // Handle action - as defined in data-action="..."
+        controller.selectArtistForUpdate(artist);
+      } else if (action === "delete") {
+        controller.confirmDeleteArtist(artist);
+      }
+    });
   }
 }
