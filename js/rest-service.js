@@ -13,8 +13,10 @@ export {
   deleteArtist,
   createAlbum,
   updateAlbum,
+  deleteAlbum,
   createSong,
   updateSong,
+  deleteSong,
 };
 
 const endpoint = "http://localhost:3333";
@@ -150,6 +152,18 @@ async function updateAlbum(album) {
   return response.ok;
 }
 
+// Delete Album//
+
+async function deleteAlbum(album) {
+  const response = await fetch(`${endpoint}/albums/${album.id}`, {
+    method: "DELETE",
+  });
+
+  await refetchAllAlbums();
+
+  return response.ok;
+}
+
 // -----ALL API with songs-------- //
 
 async function getAllSongs() {
@@ -206,6 +220,18 @@ async function updateSong(song) {
       "Content-Type": "application/json",
     },
     body: json,
+  });
+
+  await refetchAllSongs();
+
+  return response.ok;
+}
+
+// Delete Album//
+
+async function deleteSong(song) {
+  const response = await fetch(`${endpoint}/songs/${song.id}`, {
+    method: "DELETE",
   });
 
   await refetchAllSongs();

@@ -11,10 +11,10 @@ export default class SongRenderer extends ItemRenderer {
     <h2>${songs.releaseDate}</h2>
      <h3>${songs.length}</h3>
       </div>
-      <div class="btns">
-      <button class="btn-update" data-action="updateSong">Update⚙️</button>
-      <button class="btn-delete">Delete🗑️</button>       
-      </div>
+     <div class="btns">
+                <button type="button" data-action="updateSong">Update⚙️</button>
+                <button type="button" data-action="deleteSong">Delete🗑️</button>    
+             </div>
     </article>
   `;
     return html;
@@ -29,8 +29,8 @@ export default class SongRenderer extends ItemRenderer {
         // Tjek om action er "updateArtist"
         // Handle action - as defined in data-action="..."
         controller.selectSongForUpdate(song);
-      } else if (action === "delete") {
-        controller.confirmDeleteArtist(song);
+      } else if (action === "deleteSong") {
+        controller.confirmDeleteSong(song);
       }
     });
   }

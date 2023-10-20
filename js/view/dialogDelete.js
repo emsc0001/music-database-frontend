@@ -12,8 +12,8 @@ class ArtistDeleteDialog extends Dialog {
       <h1>Delete Artist?</h1>
       <p>Are you sure you want to delete the Artist "${this.artist.name}"?</p>
       <form action="" method="dialog" id="delete-form">
-        <button type="button" data-action="close">Close</button>
-        <button type="button" data-action="delete">Delete</button>
+        <button type="button" data-action="cancel">Cancel</button>
+        <button type="submit" data-action="delete">Delete</button>
       </form>
     </div>`;
 
@@ -25,9 +25,7 @@ class ArtistDeleteDialog extends Dialog {
   }
 
   delete() {
-    if (this.artist) {
-      controller.deleteArtist(this.artist);
-    }
+    controller.deleteArtist(this.artist);
   }
 }
 class AlbumDeleteDialog extends Dialog {
@@ -37,17 +35,16 @@ class AlbumDeleteDialog extends Dialog {
       `<h1>Delete Album?</h1>
       <p>Are you sure you want to delete the Album "${this.album.title}"?</p>
       <form action="" method="dialog" id="delete-form">
-        <button type="button" data-action="cancelConfirm2">Cancel</button>
-        <button type="submit" data-action="deleteConfirm2">Delete</button>
+        <button type="button" data-action="cancel">Cancel</button>
+        <button type="submit" data-action="delete">Delete</button>
       </form>`;
 
     return html;
   }
 
-  setArtist(album) {
+  setAlbum(album) {
     this.album = album;
   }
-
   delete() {
     controller.deleteAlbum(this.album);
   }
@@ -57,16 +54,16 @@ class SongDeleteDialog extends Dialog {
     const html =
       /*HTML*/
       `<h1>Delete Song?</h1>
-      <p>Are you sure you want to delete the Album "${this.song.title}"?</p>
+<p>Are you sure you want to delete the Song "${this.song.title}"?</p>
       <form action="" method="dialog" id="delete-form">
-        <button type="button" data-action="cancelConfirm3">Cancel</button>
-        <button type="submit" data-action="deleteConfirm3">Delete</button>
+        <button type="button" data-action="cancel">Cancel</button>
+        <button type="submit" data-action="delete">Delete</button>
       </form>`;
 
     return html;
   }
 
-  setArtist(song) {
+  setSong(song) {
     this.song = song;
   }
 

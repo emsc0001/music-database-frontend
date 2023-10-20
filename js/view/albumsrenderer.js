@@ -12,7 +12,7 @@ export default class AlbumRenderer extends ItemRenderer {
       </div>
       <div class="btns">
       <button class="btn-update" data-action="updateAlbum">Update⚙️</button>
-      <button class="btn-delete">Delete🗑️</button>      
+      <button class="btn-delete" data-action="deleteAlbum1">Delete🗑️</button>      
       </div>
     </article>
   `;
@@ -29,8 +29,8 @@ export default class AlbumRenderer extends ItemRenderer {
         // Tjek om action er "updateArtist"
         // Handle action - as defined in data-action="..."
         controller.selectAlbumForUpdate(album);
-      } else if (action === "delete") {
-        controller.confirmDeleteArtist(album);
+      } else if (action === "deleteAlbum1") {
+        controller.confirmDeleteAlbum(album);
       }
     });
   }

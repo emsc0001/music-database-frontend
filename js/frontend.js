@@ -245,9 +245,9 @@ async function updateSingleAlbumProperty(album, property) {
 }
 
 function confirmDeleteAlbum(album) {
-  updateAlbumDialog.setAlbum(album);
-  updateAlbumDialog.render();
-  updateAlbumDialog.show();
+  deleteAlbumDialog.setAlbum(album);
+  deleteAlbumDialog.render();
+  deleteAlbumDialog.show();
 }
 
 // Songs
@@ -281,9 +281,9 @@ async function updateSingleSongProperty(song, property) {
 }
 
 function confirmDeleteSong(song) {
-  updateSongDialog.setSong(song);
-  updateSongDialog.render();
-  updateSongDialog.show();
+  deleteSongDialog.setSong(song);
+  deleteSongDialog.render();
+  deleteSongDialog.show();
 }
 
 export {
