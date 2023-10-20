@@ -7,8 +7,8 @@ import * as controller from "../frontend.js";
 class ArtistCreateDialog extends Dialog {
   renderHTML() {
     const html =
-      /*HTML*/
-      `<div class="dialog">
+        /*HTML*/
+        `<div class="dialog">
         <h1>Create Artist</h1>
         <form action="" method="dialog" id="create-form">
           <label for="create-artist-name">Artist Name:</label>
@@ -18,9 +18,9 @@ class ArtistCreateDialog extends Dialog {
           <label for="create-artist-genres">Genres:</label>
           <input type="text" id="create-artist-genres" name="genres" placeholder="pop, rap, soul, grime......">
           <label for="create-artist-description">Description:</label>
-          <input type="text" id="create-artist-description" name="description">
-          <label for="create-artist-image">Image:</label>
-          <input type="text" id="create-artist-image" name="image">
+          <input type="text" id="create-artist-description" name="shortDescription">
+          <label for="create-artist-images">Imagesimages:</label>
+          <input type="text" id="create-artist-images" name="images">
           <button data-action="create">Create</button>
           <button data-action="close">Close</button>
         </form>
@@ -34,11 +34,11 @@ class ArtistCreateDialog extends Dialog {
     // Build artist-object from form
     const form = this.dialog.querySelector("form");
     this.artist = new artists({
-      name: form.name.value,
-      birthdate: form.birthdate.value,
-      genres: form.genres.value,
-      description: form.description.value,
-      image: form.image.value,
+        name: form.name.value,
+        birthdate: form.birthdate.value,
+        genres: form.genres.value,
+        shortDescription: form.shortDescription.value,
+        images: form.images.value,
     });
 
     // clear form
