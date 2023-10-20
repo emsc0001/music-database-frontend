@@ -172,7 +172,6 @@ function populateDropdown(selector, data) {
 
 // ------------- Controller -------------------//
 
-// Artist
 async function createArtist(artist) {
   await RESTAPI.createArtist(artist);
 
