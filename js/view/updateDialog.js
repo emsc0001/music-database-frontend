@@ -86,14 +86,18 @@ class SongUpdateDialog extends Dialog {
   renderHTML() {
     const html =
       /*HTML*/
-      `<h1>Update song</h1>
+
+      `<div class="dialog">
+
+      <h1>Update song</h1>
         <form action="" method="dialog" id="update-form">
         <label for="update-song-title">Song title:</label> <input type="text" id="update-song-title" name="title" placeholder="The song title - e.g. in da club">
         <label for="update-song-release-date">Release Date:</label> <input type="date" id="update-song-release-date" name="releaseDate" >
         <label for="update-song-length">Length (MM:SS):</label><input type="text" id="update-song-length" name="length" placeholder="03:22" />
         <button data-action="update">Update</button>
        <button data-action="close">Close</button>
-      </form>`;
+      </form>
+      </div>`;
 
     return html;
   }

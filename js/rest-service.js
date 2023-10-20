@@ -3,7 +3,19 @@ import artists from "./model/artists.js";
 import albums from "./model/albums.js";
 import songs from "./model/songs.js";
 
-export { endpoint, getAllArtists, getAllAlbums, getAllSongs, createArtist, updateArtist, deleteArtist, createAlbum, createSong };
+export {
+  endpoint,
+  getAllArtists,
+  getAllAlbums,
+  getAllSongs,
+  createArtist,
+  updateArtist,
+  deleteArtist,
+  createAlbum,
+  updateAlbum,
+  createSong,
+  updateSong,
+};
 
 const endpoint = "http://localhost:3333";
 
@@ -13,8 +25,6 @@ let allSongs = [];
 let lastFetch = 0;
 let lastFetch1 = 0;
 let lastFetch2 = 0;
-
-
 
 // -----ALL API with Artist-------- //
 async function getAllArtists() {
@@ -39,46 +49,46 @@ async function refetchAllArtists() {
 // Create Artist//
 
 async function createArtist(artist) {
-    const json = JSON.stringify(artist);
-    const response = await fetch(`${endpoint}/artists`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: json,
-    });
+  const json = JSON.stringify(artist);
+  const response = await fetch(`${endpoint}/artists`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: json,
+  });
 
-    await refetchAllArtists();
+  await refetchAllArtists();
 
   return response.ok;
 }
 // Update Artist//
 
 async function updateArtist(artist) {
-    const json = JSON.stringify(artist);
-    const response = await fetch(`${endpoint}/artists/${artist.id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: json,
-    });
+  const json = JSON.stringify(artist);
+  const response = await fetch(`${endpoint}/artists/${artist.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: json,
+  });
 
-    await refetchAllArtists();
+  await refetchAllArtists();
 
-    return response.ok;
+  return response.ok;
 }
 
 // Delete Artist//
 
 async function deleteArtist(artist) {
-    const response = await fetch(`${endpoint}/artists/${artist.id}`, {
-        method: "DELETE",
-    });
+  const response = await fetch(`${endpoint}/artists/${artist.id}`, {
+    method: "DELETE",
+  });
 
-    await refetchAllArtists();
+  await refetchAllArtists();
 
-    return response.ok;
+  return response.ok;
 }
 
 // -----ALL API with Albums-------- //
@@ -111,20 +121,34 @@ async function refetchAllAlbums() {
 }
 
 async function createAlbum(album) {
-    const json = JSON.stringify(album);
-    const response = await fetch(`${endpoint}/albums`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: json,
-    });
+  const json = JSON.stringify(album);
+  const response = await fetch(`${endpoint}/albums`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: json,
+  });
 
-    await refetchAllAlbums();
+  await refetchAllAlbums();
 
-    return response.ok;
+  return response.ok;
 }
 
+async function updateAlbum(album) {
+  const json = JSON.stringify(album);
+  const response = await fetch(`${endpoint}/albums/${album.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: json,
+  });
+
+  await refetchAllAlbums();
+
+  return response.ok;
+}
 
 // -----ALL API with songs-------- //
 
@@ -159,18 +183,32 @@ async function refetchAllSongs() {
   }
 }
 
-
 async function createSong(song) {
-    const json = JSON.stringify(song);
-    const response = await fetch(`${endpoint}/songs`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: json,
-    });
+  const json = JSON.stringify(song);
+  const response = await fetch(`${endpoint}/songs`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: json,
+  });
 
-    await refetchAllSongs();
+  await refetchAllSongs();
 
-    return response.ok;
+  return response.ok;
+}
+
+async function updateSong(song) {
+  const json = JSON.stringify(song);
+  const response = await fetch(`${endpoint}/songs/${song.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: json,
+  });
+
+  await refetchAllSongs();
+
+  return response.ok;
 }
