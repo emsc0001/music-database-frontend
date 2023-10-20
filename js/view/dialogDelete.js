@@ -12,8 +12,8 @@ class ArtistDeleteDialog extends Dialog {
       <h1>Delete Artist?</h1>
       <p>Are you sure you want to delete the Artist "${this.artist.name}"?</p>
       <form action="" method="dialog" id="delete-form">
-        <button type="button" data-action="cancelConfirm1">Cancel</button>
-        <button type="submit" data-action="deleteConfirm1">Delete</button>
+        <button type="button" data-action="close">Close</button>
+        <button type="button" data-action="delete">Delete</button>
       </form>
     </div>`;
 

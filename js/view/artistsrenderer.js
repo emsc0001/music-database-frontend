@@ -26,10 +26,8 @@ export default class ArtistRenderer extends ItemRenderer {
       const artist = this.item;
 
       if (action === "updateArtist") {
-        // Tjek om action er "updateArtist"
-        // Handle action - as defined in data-action="..."
         controller.selectArtistForUpdate(artist);
-      } else if (action === "delete") {
+      } else if (action === "deleteArtist") {
         controller.confirmDeleteArtist(artist);
       }
     });
