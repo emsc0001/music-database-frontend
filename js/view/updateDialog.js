@@ -92,6 +92,7 @@ class SongUpdateDialog extends Dialog {
         <label for="update-song-release-date">Release Date:</label> <input type="date" id="update-song-release-date" name="releaseDate" >
         <label for="update-song-length">Length (MM:SS):</label><input type="text" id="update-song-length" name="length" placeholder="03:22" />
         <button data-action="update">Update</button>
+       <button data-action="close">Close</button>
       </form>`;
 
     return html;
