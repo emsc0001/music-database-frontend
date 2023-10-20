@@ -3,7 +3,6 @@ export default class albums {
     this.id = obj.id;
     this.title = obj.title;
     this.releaseDate = obj.releaseDate;
-    this.artistIds = obj.artistIds;
     Object.defineProperty(this, "id", { writable: false });
   }
 }
