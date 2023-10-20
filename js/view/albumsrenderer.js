@@ -1,4 +1,5 @@
 import ItemRenderer from "./itemrenderer.js";
+import * as controller from "../frontend.js";
 
 export default class AlbumRenderer extends ItemRenderer {
   render() {
@@ -10,11 +11,27 @@ export default class AlbumRenderer extends ItemRenderer {
         <h2>${albums.releaseDate}</h2>
       </div>
       <div class="btns">
-      <button class="btn-update">Update⚙️</button>
+      <button class="btn-update" data-action="updateAlbum">Update⚙️</button>
       <button class="btn-delete">Delete🗑️</button>      
       </div>
     </article>
   `;
     return html;
+  }
+
+  postRender(element) {
+    // Add eventListener to element
+    element.addEventListener("click", (event) => {
+      const action = event.target.dataset.action ?? "update";
+      const album = this.item;
+
+      if (action === "updateAlbum") {
+        // Tjek om action er "updateArtist"
+        // Handle action - as defined in data-action="..."
+        controller.selectAlbumForUpdate(album);
+      } else if (action === "delete") {
+        controller.confirmDeleteArtist(album);
+      }
+    });
   }
 }

@@ -114,10 +114,17 @@ function initializeViews() {
   //   document.querySelectorAll("[data-action='deleteArtist1']").forEach((button) => button.addEventListener("click", deleteArtistDialog));
 
   // initialize update-button
-
   document
     .querySelectorAll("[data-action='updateArtist']")
     .forEach((button) => button.addEventListener("click", updateArtistDialog.show.bind(updateArtistDialog)));
+
+  document
+    .querySelectorAll("[data-action='updateAlbum']")
+    .forEach((button) => button.addEventListener("click", updateAlbumDialog.show.bind(updateAlbumDialog)));
+
+  document
+    .querySelectorAll("[data-action='updateSong']")
+    .forEach((button) => button.addEventListener("click", updateSongDialog.show.bind(updateSongDialog)));
 
   // initialize create-button for Artists
   //   document
@@ -213,6 +220,17 @@ async function createAlbum(album) {
   albumsLists.render();
 }
 
+function selectAlbumForUpdate(album) {
+  updateAlbumDialog.setAlbum(album);
+  updateAlbumDialog.show();
+}
+
+function confirmDeleteAlbum(album) {
+  updateAlbumDialog.setAlbum(album);
+  updateAlbumDialog.render();
+  updateAlbumDialog.show();
+}
+
 // Songs
 
 async function createSong(song) {
@@ -223,4 +241,29 @@ async function createSong(song) {
   songsLists.render();
 }
 
-export { artists, albums, songs, createArtist, selectArtistForUpdate, updateArtist, confirmDeleteArtist, deleteArtist, createAlbum, createSong };
+function selectSongForUpdate(song) {
+  updateSongDialog.setSong(song);
+  updateSongDialog.show();
+}
+function confirmDeleteSong(song) {
+  updateSongDialog.setArtist(song);
+  updateSongDialog.render();
+  updateSongDialog.show();
+}
+
+export {
+  artists,
+  albums,
+  songs,
+  createArtist,
+  selectArtistForUpdate,
+  selectAlbumForUpdate,
+  selectSongForUpdate,
+  confirmDeleteAlbum,
+  confirmDeleteSong,
+  updateArtist,
+  confirmDeleteArtist,
+  deleteArtist,
+  createAlbum,
+  createSong,
+};
