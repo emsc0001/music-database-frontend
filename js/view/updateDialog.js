@@ -9,7 +9,7 @@ class ArtistUpdateDialog extends Dialog {
     const html =
       /*HTML*/
       `<h1>Update Artist</h1>
-      <form action="" method="post" id="update-form">
+      <form action="" method="dialog" id="update-form">
         <label for="update-artist-name">Artist Name:</label> <input type="text" id="update-artist-name" name="name" placeholder="The artist name - e.g. 50 cent">
         <label for="update-artist-birthdate">Birthdate:</label> <input type="date" id="update-artist-birthdate" name="birthdate">
         <label for="update-artist-genres">Genres:</label> <input type="text" id="update-artist-genres" name="genres" placeholder="pop, rap, soul, grime......">
