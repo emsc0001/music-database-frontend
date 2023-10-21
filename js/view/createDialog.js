@@ -7,8 +7,8 @@ import * as controller from "../frontend.js";
 class ArtistCreateDialog extends Dialog {
   renderHTML() {
     const html =
-      /*HTML*/
-      `<div class="dialog-container">
+        /*HTML*/
+        `<div class="dialog-container">
         <h1>Create Artist</h1>
         <form action="" method="dialog" id="create-form">
           <label for="create-artist-name">Artist Name:</label>
@@ -17,8 +17,8 @@ class ArtistCreateDialog extends Dialog {
           <input type="date" id="create-artist-birthdate" name="birthdate">
           <label for="create-artist-genres">Genres:</label>
           <input type="text" id="create-artist-genres" name="genres" placeholder="pop, rap, soul, grime......">
-          <label for="create-artist-description">Description:</label>
-          <input type="text" id="create-artist-description" name="shortDescription">
+         <label for="create-artist-description">Description:</label>
+            <textarea id="create-artist-description" name="shortDescription" rows="4" cols="50"></textarea>
           <label for="create-artist-images">Images:</label>
           <input type="text" id="create-artist-images" name="images">
           <button data-action="create">Create</button>
