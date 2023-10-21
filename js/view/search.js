@@ -1,40 +1,62 @@
-import { selectSearch } from './search.js';
+import { artists, albums, songs } from "./frontend.js";
 
-// Define search variables and selected types for artists, albums, and songs
-const search = {
-    artist: { term: "", type: "all" },
-    album: { term: "", type: "all" },
-    song: { term: "", type: "all" },
-};
 
-// Function to handle search for any category
-function selectSearch(category) {
-    const enteredTerm = document.querySelector(`#${category}SearchField`).value.toLowerCase().trim();
-    const selectedType = document.querySelector(`#${category}SearchType`).value;
-
-    if (enteredTerm !== search[category].term || selectedType !== search[category].type) {
-        setSearch(category, enteredTerm, selectedType);
-        displayUpdatedList();
-    }
+// Search for artists
+function searchArtists(searchValue) {
+  const searchValues = searchValue.toLowerCase();
+  return artists.filter((artist) => artist.name.toLowerCase().includes(searchValues));
 }
 
-// Function to set search variables for any category
-function setSearch(category, term, type) {
-    search[category].term = term;
-    search[category].type = type;
+// Search for albums
+function searchAlbums(searchValue) {
+  const searchValues = searchValue.toLowerCase();
+  return albums.filter((album) => album.title.toLowerCase().includes(searchValues));
 }
 
-// Function to search for items in any category
-function searchItems(items, category) {
-    const { term, type } = search[category];
-
-    if (term.length === 0) {
-        return items;
-    } else if (type === "all") {
-        return items.filter(item => Object.values(item).some(value => value.toString().toLowerCase().includes(term)));
-    } else {
-        return items.filter(item => item[type].toString().toLowerCase().includes(term));
-    }
+// Search for songs
+function searchSongs(searchValue) {
+  const searchValues = searchValue.toLowerCase();
+  return songs.filter((song) => song.title.toLowerCase().includes(searchValues));
 }
 
-export { selectSearch, searchItems };
+// Function to display search results
+function displayResults(results, containerElement) {
+  containerElement.innerHTML = "";
+  for (const result of results) {
+    const item = document.createElement("div");
+    item.textContent = result.name || result.title; 
+    containerElement.appendChild(item);
+  }
+}
+_
+
+// Search input event listeners
+document.getElementById("input-search-artist").addEventListener("input", (event) => {
+    const searchValue = event.target.value;
+    const artistResults = searchArtists(searchValue);
+    displayResults(artistResults, document.getElementById("artists-container"));
+});
+
+document.getElementById("input-search-album").addEventListener("input", (event) => {
+    const searchValue = event.target.value;
+    const albumResults = searchAlbums(searchValue);
+    displayResults(albumResults, document.getElementById("albums-container"));
+});
+  
+document.getElementById("input-search-song").addEventListener("input", (event) => {
+    const searchValue = event.target.value;
+    const songResults = searchSongs(searchValue);
+    displayResults(songResults, document.getElementById("songs-container"));
+});
+
+document.getElementById("search-form-artist").addEventListener("submit", (event) => {
+    event.preventDefault();
+});
+
+document.getElementById("search-form-album").addEventListener("submit", (event) => {
+    event.preventDefault();
+});
+
+document.getElementById("search-form-song").addEventListener("submit", (event) => {
+    event.preventDefault();
+});
