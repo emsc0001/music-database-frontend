@@ -1,14 +1,14 @@
 const endpoint = "http://localhost:3333";
 
 export { endpoint, inputSearchChanged, inputSearchChangedAlbum, inputSearchChangedSong };
-import { artists, albums, songs } from "./frontend.js";
+import { artists, albums, songs, updatedListArtist } from "./frontend.js";
 
 // ----------- SEARCH ----------- //
 
 function inputSearchChanged(event) {
   const value = event.target.value;
   const artistToShow = searchArtist(value);
-  displayArtists(artistToShow);
+  updatedListArtist(artistToShow);
 }
 
 const searchArtist = (searchValue) => {
