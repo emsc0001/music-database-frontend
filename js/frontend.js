@@ -368,7 +368,4 @@ export {
   deleteArtist,
   createAlbum,
   createSong,
-  updateSingleArtistProperty,
-  updateSingleAlbumProperty,
-  updateSingleSongProperty,
 };
