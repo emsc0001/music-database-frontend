@@ -354,3 +354,29 @@ textarea {
 #sorting[data-sort-direction="desc"] button::after {
   content: " ▲"; /* Sorting direction for descending */
 }
+
+
+/* Adjust the search container for Artists, Albums, and Songs */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* Style for the create button */
+.search-container button[data-action^="create"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Adjust margin for the create button */
+.search-container button[data-action^="create"] {
+  margin-left: 200px; /* Add more margin if needed */
+}
