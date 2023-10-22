@@ -53,6 +53,11 @@ async function artistApp() {
   // create views
   initializeViews();
   initializeActionButtons();
+
+  document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.getElementById("input-search-artist");
+      searchInput.addEventListener("input", handleSearch);
+  });
 }
 
 function initializeViews() {
@@ -183,14 +188,42 @@ function initializeActionButtons() {
   });
 }
 
-async function updatedListArtist() {
-  const artists = await RESTAPI.getAllArtists();
-  const searchedList = searchList(artists);
+async function updatedListArtist(data) {
 
-  artistsLists.render(searchedList);
+  const artists = data.artists
+  console.log(artists);
+   artistsLists = new ListRenderer(artists, "#artists-container", ArtistRenderer);
+  artistsLists.render();
 }
 
 initTabs();
+
+
+// ---Search----//
+
+async function handleSearch() {
+  // Get the search query from the input field
+  const searchQuery = document.getElementById('input-search-artist').value;
+
+  // Send a request to the backend if the query is not empty
+  if (searchQuery) {
+
+    console.log(searchQuery);
+    const response = await fetch(`${endpoint}/search?q=${searchQuery}`);
+
+    if (response.ok) {
+      const data = await response.json();
+
+      updatedListArtist(data)
+
+    } else {
+      console.error('Search request failed');
+    }
+  } 
+}
+
+
+
 
 // -----Fills the dropdown in Dialog----- //
 
