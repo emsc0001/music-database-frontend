@@ -254,11 +254,6 @@ async function updateArtist(artist) {
   artistsLists.render();
 }
 
-async function updateSingleArtistProperty(artist, property, value) {
-  await RESTAPI.patchArtist(artist, property, value);
-  // Do not re-render the entire list for a single property - expect the View to re-render itself!
-}
-
 function confirmDeleteArtist(artist) {
   deleteArtistDialog.setArtist(artist);
   deleteArtistDialog.render();
@@ -296,11 +291,6 @@ async function updateAlbum(album) {
   albums = await RESTAPI.getAllAlbums();
   albumsLists.setList(albums);
   albumsLists.render();
-}
-
-async function updateSingleAlbumProperty(album, property) {
-  await RESTAPI.patchArtist(album, property, album[property]);
-  // Do not re-render the entire list for a single property - expect the View to re-render itself!
 }
 
 function confirmDeleteAlbum(album) {
@@ -341,11 +331,6 @@ async function updateSong(song) {
   songs = await RESTAPI.getAllSongs();
   songsLists.setList(songs);
   songsLists.render();
-}
-
-async function updateSingleSongProperty(song, property) {
-  await RESTAPI.patchArtist(song, property, song[property]);
-  // Do not re-render the entire list for a single property - expect the View to re-render itself!
 }
 
 function confirmDeleteSong(song) {

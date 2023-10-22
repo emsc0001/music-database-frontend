@@ -10,7 +10,6 @@ export {
   getAllSongs,
   createArtist,
   updateArtist,
-  patchArtist,
   deleteArtist,
   createAlbum,
   updateAlbum,
@@ -71,26 +70,6 @@ async function updateArtist(artist) {
   const json = JSON.stringify(artist);
   const response = await fetch(`${endpoint}/artists/${artist.id}`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: json,
-  });
-
-  await refetchAllArtists();
-
-  return response.ok;
-}
-
-// Patch Artist//
-
-async function patchArtist(artist, property, value) {
-  const dataObject = {};
-  dataObject[property] = value;
-
-  const json = JSON.stringify(dataObject);
-  const response = await fetch(`${endpoint}/artists/${artist.id}`, {
-    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
