@@ -194,7 +194,6 @@ function initializeViews() {
 document.addEventListener("DOMContentLoaded", () => {
   const searchInputs = document.querySelectorAll("[data-search-type]");
   searchInputs.forEach((input) => {
-    console.log("hey");
     input.addEventListener("input", handleSearch);
       });
     });
@@ -239,7 +238,8 @@ async function createArtist(artist) {
 
     artists = await RESTAPI.getAllArtists();
     artistsLists.setList(artists);
-    artistsLists.render();
+  artistsLists.render();
+  initializeViews()
 }
 
 function selectArtistForUpdate(artist) {
@@ -278,7 +278,8 @@ async function createAlbum(album) {
 
     albums = await RESTAPI.getAllAlbums();
     albumsLists.setList(albums);
-    albumsLists.render();
+  albumsLists.render();
+  initializeViews()
 }
 
 function selectAlbumForUpdate(album) {

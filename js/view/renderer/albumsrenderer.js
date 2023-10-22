@@ -4,11 +4,12 @@ import * as controller from "../../frontend.js";
 export default class AlbumRenderer extends ItemRenderer {
     render() {
         const albums = this.item;
+        const releaseDate = new Date(albums.releaseDate).toLocaleDateString();
         const html = /*html*/ `
            <article class="grid-item">
       <h1>${albums.title}</h1>
       <div class="grid-info">
-        <h2>${albums.releaseDate}</h2>
+        <h2>Release date: ${releaseDate}</h2>
       </div>
       <div class="btns">
       <button class="btn-update" data-action="updateAlbum">Update⚙️</button>
