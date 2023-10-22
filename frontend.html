@@ -72,12 +72,11 @@
         <!-- Artists-search -->
         <section id="artists" class="tab-content">
           <button id="btn-create-artist" data-action="createArtist">Create new Artist</button>
-
+          
           <div class="search-container">
             <form id="search-form-artist">
               <h2>Artists</h2>
-              <input type="text" id="input-search-artist" placeholder="Search After Artists" />
-              <button type="submit">Search</button>
+              <input type="text" id="input-search-artist" placeholder="Search After Artists" data-search-type="artists" />
             </form>
           </div>
           <div id="artists-container">
@@ -93,9 +92,8 @@
         <div class="search-container">
           <form id="search-form-album">
             <h2>Albums</h2>
-            <input type="text" id="input-search-album" placeholder="Search After Albums" />
-            <button type="submit">Search</button>
-          </form>
+            <input type="text" id="input-search-album" placeholder="Search After Albums" data-search-type="albums" />
+        </form>
         </div>
         <div id="albums-container">
           <article>
@@ -106,13 +104,12 @@
 
       <!-- Songs-search -->
       <section id="songs" class="tab-content">
+        
         <button id="btn-create-song" data-action="createSong">Create new song</button>
-
         <div class="search-container">
           <form id="search-form-song">
             <h2>Songs</h2>
-            <input type="text" id="input-search-song" placeholder="Search After Songs" />
-            <button type="submit">Search</button>
+            <input type="text" id="input-search-song" placeholder="Search After Songs" data-search-type="songs"/>
           </form>
         </div>
 

@@ -1,14 +1,14 @@
 import Dialog from "./dialog.js";
-import artists from "../model/artists.js";
-import albums from "../model/albums.js";
-import songs from "../model/songs.js";
-import * as controller from "../frontend.js";
+import artists from "../../model/artists.js";
+import albums from "../../model/albums.js";
+import songs from "../../model/songs.js";
+import * as controller from "../../frontend.js";
 
 class ArtistCreateDialog extends Dialog {
-  renderHTML() {
-    const html =
-        /*HTML*/
-        `<div class="dialog-container">
+    renderHTML() {
+        const html =
+            /*HTML*/
+            `<div class="dialog-container">
         <h1>Create Artist</h1>
         <form action="" method="dialog" id="create-form">
           <label for="create-artist-name">Artist Name:</label>
@@ -26,31 +26,31 @@ class ArtistCreateDialog extends Dialog {
         </form>
       </div>`;
 
-    return html;
-  }
+        return html;
+    }
 
-  create() {
-    // Build artist-object from form
-    const form = this.dialog.querySelector("form");
-    this.artist = new artists({
-      name: form.name.value,
-      birthdate: form.birthdate.value,
-      genres: form.genres.value,
-      shortDescription: form.shortDescription.value,
-      images: form.images.value,
-    });
+    create() {
+        // Build artist-object from form
+        const form = this.dialog.querySelector("form");
+        this.artist = new artists({
+            name: form.name.value,
+            birthdate: form.birthdate.value,
+            genres: form.genres.value,
+            shortDescription: form.shortDescription.value,
+            images: form.images.value,
+        });
 
-    // clear form
-    form.reset();
+        // clear form
+        form.reset();
 
-    controller.createArtist(this.artist);
-  }
+        controller.createArtist(this.artist);
+    }
 }
 class AlbumCreateDialog extends Dialog {
-  renderHTML() {
-    const html =
-        /*HTML*/
-        `<div class="dialog-container">
+    renderHTML() {
+        const html =
+            /*HTML*/
+            `<div class="dialog-container">
       <h1>Create Album</h1>
         <form action="" method="dialog" id="create-form">
           <label for="create-album-title">Album title:</label>
@@ -65,29 +65,29 @@ class AlbumCreateDialog extends Dialog {
         </form>
        </div>`;
 
-    return html;
-  }
+        return html;
+    }
 
-  create() {
-    // Build artist-object from form
-    const form = this.dialog.querySelector("form");
-    this.album = new albums({
-      title: form.title.value,
-      releaseDate: form.releaseDate.value,
-      artistIds: [form.artistId.value],
-    });
+    create() {
+        // Build artist-object from form
+        const form = this.dialog.querySelector("form");
+        this.album = new albums({
+            title: form.title.value,
+            releaseDate: form.releaseDate.value,
+            artistIds: [form.artistId.value],
+        });
 
-    // clear form
-    form.reset();
+        // clear form
+        form.reset();
 
-    controller.createAlbum(this.album);
-  }
+        controller.createAlbum(this.album);
+    }
 }
 class SongCreateDialog extends Dialog {
-  renderHTML() {
-    const html =
-        /*HTML*/
-        `<div class="dialog-container">
+    renderHTML() {
+        const html =
+            /*HTML*/
+            `<div class="dialog-container">
       <h1>Create Song</h1>
         <form action="" method="dialog" id="create-form">
         <label for="create-song-title">Song title:</label> <input type="text" id="create-song-title" name="title" placeholder="The song title - e.g. in da club">
@@ -106,25 +106,25 @@ class SongCreateDialog extends Dialog {
       </form>
       </div>`;
 
-    return html;
-  }
+        return html;
+    }
 
-  create() {
-    // Build artist-object from form
-    const form = this.dialog.querySelector("form");
-    this.song = new songs({
-      title: form.title.value,
-      releaseDate: form.releaseDate.value,
-      length: form.length.value,
-      artistIds: [form.artistId.value],
-      albumIds: [form.albumId.value],
-    });
+    create() {
+        // Build artist-object from form
+        const form = this.dialog.querySelector("form");
+        this.song = new songs({
+            title: form.title.value,
+            releaseDate: form.releaseDate.value,
+            length: form.length.value,
+            artistIds: [form.artistId.value],
+            albumIds: [form.albumId.value],
+        });
 
-    // clear form
-    form.reset();
+        // clear form
+        form.reset();
 
-    controller.createSong(this.song);
-  }
+        controller.createSong(this.song);
+    }
 }
 
 export { ArtistCreateDialog, AlbumCreateDialog, SongCreateDialog };

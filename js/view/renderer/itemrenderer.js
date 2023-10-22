@@ -26,4 +26,5 @@ export default class ItemRenderer {
             this.postRender(newElement);
         }
     }
+
 }
