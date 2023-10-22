@@ -134,7 +134,7 @@ function initializeViews() {
   populateDropdown("#create-song-artist", artists);
   populateDropdown("#create-song-album", albums);
 
-  // initialize Filter-button
+  // initialize Sort-button
   document.querySelectorAll("[data-action='sort']").forEach((button) =>
     button.addEventListener("click", () => {
       // before sorting - remove .selected from previous selected header
