@@ -135,19 +135,35 @@ function initializeViews() {
   populateDropdown("#create-song-album", albums);
 
   // initialize Sort-button
-  document.querySelectorAll("[data-action='sort']").forEach((button) =>
+  document.querySelectorAll("[data-action='sort']").forEach((button) => {
     button.addEventListener("click", () => {
       // before sorting - remove .selected from previous selected header
       document.querySelector("[data-action=sort].selected")?.classList.remove("selected");
 
-      artistsLists.sort(button.dataset.sortBy, button.dataset.sortDirection);
+      // Determine the type of list based on button attributes
+      const listType = button.dataset.sortList;
+      let listToSort;
 
-      // indicate selected sort header
-      button.classList.add("selected");
-      // indicate sort-direction on button
-      button.dataset.sortDirection = artistsLists.sortDir;
-    })
-  );
+      if (listType === "artists") {
+        listToSort = artistsLists;
+      } else if (listType === "albums") {
+        listToSort = albumsLists;
+      } else if (listType === "songs") {
+        listToSort = songsLists;
+      } else {
+        // Handle this according to your structure
+      }
+
+      if (listToSort) {
+        listToSort.sort(button.dataset.sortBy, button.dataset.sortDirection);
+
+        // indicate selected sort header
+        button.classList.add("selected");
+        // indicate sort-direction on button
+        button.dataset.sortDirection = listToSort.sortDir;
+      }
+    });
+  });
 
   // initialize Filter-button
   document.querySelectorAll("[data-action='filter']").forEach((button) => {
