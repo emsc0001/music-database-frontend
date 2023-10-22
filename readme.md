@@ -14,4 +14,4 @@ Dette repository indeholder en simpel musikdatabaseapp, der giver dig mulighed f
 Frontend er åben på GitHub Pages og kan tilgås her:
 
 [Live Webapplikation på Azure](https://music-database.azurewebsites.net/)
-)
+
