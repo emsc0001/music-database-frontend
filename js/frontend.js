@@ -2,16 +2,15 @@
 import { endpoint } from "./rest-service.js";
 import * as RESTAPI from "./rest-service.js";
 
-import { inputSearchChanged, inputSearchChangedAlbum, inputSearchChangedSong } from "./helpers.js";
 import ListRenderer from "./view/listrenderer.js";
 import ArtistRenderer from "./view/artistsrenderer.js";
 import AlbumRenderer from "./view/albumsrenderer.js";
 import SongsRenderer from "./view/songsrenderer.js";
 
-import ArtistShowDialog from "./view/artistshowrenderer.js";
 import { ArtistCreateDialog, AlbumCreateDialog, SongCreateDialog } from "./view/createDialog.js";
 import { ArtistUpdateDialog, AlbumUpdateDialog, SongUpdateDialog } from "./view/updateDialog.js";
 import { ArtistDeleteDialog, AlbumDeleteDialog, SongDeleteDialog } from "./view/dialogDelete.js";
+import { selectSearch, searchList } from "./view/search.js";
 
 import { initTabs } from "./tabs.js";
 
@@ -50,8 +49,10 @@ async function artistApp() {
   console.log("Number of artists:", artists.length);
   console.log("Number of albums:", albums.length);
   console.log("Number of songs:", songs.length);
+
   // create views
   initializeViews();
+  initializeActionButtons();
 }
 
 function initializeViews() {
@@ -126,27 +127,49 @@ function initializeViews() {
     .querySelectorAll("[data-action='updateSong']")
     .forEach((button) => button.addEventListener("click", updateSongDialog.show.bind(updateSongDialog)));
 
-  // initialize create-button for Artists
-  //   document
-  //     .querySelectorAll("[data-action='create1']")
-  //     .forEach((button) => button.addEventListener("click", createArtistDialog.show.bind(createArtistDialog)));
-
-  //   // initialize create-button for Albums
-  //   document
-  //     .querySelectorAll("[data-action='create2']")
-  //     .forEach((button) => button.addEventListener("click", createAlbumDialog.show.bind(createAlbumDialog)));
-
-  //   // initialize create-button for Songs
-  //   document
-  //     .querySelectorAll("[data-action='create3']")
-  //     .forEach((button) => button.addEventListener("click", createSongDialog.show.bind(createSongDialog)));
-
   // Usage for creating the artist dropdown
   populateDropdown("#create-album-artist", artists);
 
   // Usage for creating the album dropdown (if it exists)
   populateDropdown("#create-song-artist", artists);
   populateDropdown("#create-song-album", albums);
+
+  // initialize Filter-button
+  document.querySelectorAll("[data-action='filter']").forEach((button) => {
+    button.addEventListener("click", () => {
+      const filterValue = button.dataset.filter;
+
+      if (filterValue !== "*") {
+        filterArtistsByGenre(filterValue);
+      } else {
+        // Handle the case where you want to show all artists
+        // You can implement this according to your needs.
+        // For example, clear the filter or show all artists.
+        filterArtistsByGenre(""); // Pass an empty string or modify this part as needed.
+      }
+    });
+  });
+}
+
+function filterArtistsByGenre(genre) {
+  artistsLists.filter("genres", genre);
+}
+
+// initialize Search-Option
+
+function initializeActionButtons() {
+  document.querySelectorAll("[data-action='search']").forEach((field) => {
+    field.addEventListener("input", selectSearch);
+    field.addEventListener("keyup", selectSearch);
+    field.addEventListener("change", selectSearch);
+  });
+}
+
+async function updatedListArtist() {
+  const artists = await RESTAPI.getAllArtists();
+  const searchedList = searchList(artists);
+
+  artistsLists.render(searchedList);
 }
 
 initTabs();
@@ -317,6 +340,7 @@ export {
   deleteSong,
   confirmDeleteSong,
   updateArtist,
+  updatedListArtist,
   updateAlbum,
   updateSong,
   confirmDeleteArtist,
@@ -326,4 +350,5 @@ export {
   updateSingleArtistProperty,
   updateSingleAlbumProperty,
   updateSingleSongProperty,
+  initializeActionButtons,
 };

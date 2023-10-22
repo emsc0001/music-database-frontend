@@ -22,16 +22,27 @@
         </select>
 
         <!-- Filter-input -->
-        <label for="filter-artist">Filter:</label>
+        <!-- <label for="filter-artist">Filter:</label>
         <select name="filter-artist" id="filter-artist">
-          <option value="">Not selected</option>
-          <option value="rap">Rap</option>
-          <option value="pop">Pop</option>
-          <option value="grime">Grime</option>
-          <option value="reggae">Reggae</option>
-          <option value="k-pop">K-pop</option>
+          <option value="" data-action="filter" data-filter="*">Not selected</option>
+          <option data-action="filter" data-filter="type:rap" value="rap">Rap</option>
+          <option data-action="filter" data-filter="type:pop" value="pop">Pop</option>
+          <option data-action="filter" data-filter="type:grime" value="grime">Grime</option>
+          <option data-action="filter" data-filter="type:reggae" value="reggae">Reggae</option>
+          <option data-action="filter" data-filter="type:k-pop" value="k-pop">K-pop</option>
         </select>
-      </div>
+      </div> -->
+
+     <p>
+  Filter:
+  <button class="filter" data-action="filter" data-filter="*">All</button>
+  <button class="filter" data-action="filter" data-filter="Rap">Rap</button>
+  <button class="filter" data-action="filter" data-filter="Grime">Grime</button>
+  <button class="filter" data-action="filter" data-filter="Pop">Pop</button>
+  <button class="filter" data-action="filter" data-filter="K-pop">K-pop</button>
+  <button class="filter" data-action="filter" data-filter="Reggae">Reggae</button>
+</p>
+
 
       <div class="tab-search-wrapper">
         <div class="tab-buttons">

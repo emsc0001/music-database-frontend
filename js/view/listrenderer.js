@@ -25,12 +25,29 @@ export default class ListRenderer {
   clear() {
     this.container.innerHTML = "";
   }
+  filter(filterProperty, filterValue) {
+    // Simply remember the settings
+    this.filterProperty = filterProperty;
+    this.filterValue = filterValue;
 
+    // And re-render the list - this will do the actual filtering
+    this.render();
+  }
+
+  // Modify the render method to filter based on the "genres" property
   render() {
     this.clear();
 
-    // create a filtered list to render
-    const filteredList = this.list.filter((item) => this.filterProperty === "*" || item.item[this.filterProperty] == this.filterValue);
+    // Create a filtered list to render
+    const filteredList = this.list.filter((item) => {
+      if (this.filterProperty === "genres") {
+        // Check if the artist's "genres" property matches the filter value
+        return item.item.genres === this.filterValue;
+      } else {
+        // Handle other filter properties if needed
+        return this.filterProperty === "*" || item.item[this.filterProperty] === this.filterValue;
+      }
+    });
 
     for (const itemRenderer of filteredList) {
       const html = itemRenderer.render();
