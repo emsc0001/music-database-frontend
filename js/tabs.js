@@ -2,11 +2,6 @@ export function initTabs() {
   const tabButtons = document.querySelectorAll(".tab-buttons button");
   const tabContents = document.querySelectorAll(".tab-content");
 
-  // Hide the artist search field on page load
-  // document.getElementById("search-form-artist").style.display = "none";
-  // document.getElementById("search-form-album").style.display = "none";
-  // document.getElementById("search-form-song").style.display = "none";
-
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const tabName = button.getAttribute("data-tabShow");
