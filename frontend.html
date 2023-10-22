@@ -19,29 +19,30 @@
     <thead>
       <tr id="sorting">
         <!-- Sort buttons for artists -->
-        <th>
-          <button data-action="sort" data-sort-list="artists" data-sort-direction="asc" data-sort-by="name">Name</button>
-        </th>
-        <th>
-          <button data-action="sort" data-sort-list="artists" data-sort-direction="asc" data-sort-by="birthdate">Birthdate</button>
-        </th>
-        
-        <!-- Sort buttons for albums -->
-        <th>
-          <button data-action="sort" data-sort-list="albums" data-sort-direction="asc" data-sort-by="title">Album Title</button>
-        </th>
-        <th>
-          <button data-action="sort" data-sort-list="albums" data-sort-direction="asc" data-sort-by="releaseDate">Release Date</button>
-        </th>
-        
-        <!-- Sort buttons for songs -->
-        <th>
-          <button data-action="sort" data-sort-list="songs" data-sort-direction="asc" data-sort-by="title">Song Title</button>
-        </th>
-        <th>
-          <button data-action="sort" data-sort-list="songs" data-sort-direction="asc" data-sort-by="length">Song Length</button>
-        </th>
-      </tr>
+<th id="artists-sort-name">
+  <button data-action="sort" data-sort-list="artists" data-sort-direction="asc" data-sort-by="name">Name</button>
+</th>
+<th id="artists-sort-birthdate">
+  <button data-action="sort" data-sort-list="artists" data-sort-direction="asc" data-sort-by="birthdate">Birthdate</button>
+</th>
+
+<!-- Sort buttons for albums -->
+<th id="albums-sort-title">
+  <button data-action="sort" data-sort-list="albums" data-sort-direction="asc" data-sort-by="title">Album Title</button>
+</th>
+<th id="albums-sort-releaseDate">
+  <button data-action="sort" data-sort-list="albums" data-sort-direction="asc" data-sort-by="releaseDate">Release Date</button>
+</th>
+
+<!-- Sort buttons for songs -->
+<th id="songs-sort-title">
+  <button data-action="sort" data-sort-list="songs" data-sort-direction="asc" data-sort-by="title">Song Title</button>
+</th>
+<th id="songs-sort-length">
+  <button data-action="sort" data-sort-list="songs" data-sort-direction="asc" data-sort-by="length">Song Length</button>
+</th>
+
+
     </thead>
     <!-- Your table body goes here -->
   </table>
