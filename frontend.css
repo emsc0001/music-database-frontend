@@ -383,3 +383,27 @@ textarea {
 .filter-button:hover {
   background-color: #ccc;
 }
+
+/* Sort Buttons */
+#list {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+#list th {
+  background-color: #333;
+  color: #ffffff;
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Style the sorting indicators (optional) */
+#sorting button::after {
+  content: " ▼"; /* Default sorting direction (ascending) */
+}
+
+#sorting[data-sort-direction="desc"] button::after {
+  content: " ▲"; /* Sorting direction for descending */
+}

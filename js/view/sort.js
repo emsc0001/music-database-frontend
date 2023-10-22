@@ -1,54 +1,51 @@
+// import { selectSort, sortList } from './sort.js';
 
+// let sortingBy = "name";
+// let sortingDirection = "asc";
 
-import { selectSort, sortList } from './sort.js';
+// function selectSort(event, category) {
+//     const heading = event.target;
 
-let sortingBy = "name";
-let sortingDirection = "asc";
+//     const sortBy = heading.dataset.sortBy;
+//     const sortDir = heading.dataset.sortDirection;
 
-function selectSort(event, category) {
-    const heading = event.target;
+//     // Show status in UI
+//     // Find the "old" selected element and remove the "selected" class
+//     const oldHeading = document.querySelector(`[data-action=sort][data-category=${category}].selected`);
+//     oldHeading?.classList.remove("selected");
 
-    const sortBy = heading.dataset.sortBy;
-    const sortDir = heading.dataset.sortDirection;
+//     // Indicate active sort
+//     heading.classList.add("selected");
 
-    // Show status in UI
-    // Find the "old" selected element and remove the "selected" class
-    const oldHeading = document.querySelector(`[data-action=sort][data-category=${category}].selected`);
-    oldHeading?.classList.remove("selected");
+//     // Toggle direction in UI
+//     if (sortDir === "asc") {
+//         heading.dataset.sortDirection = "desc";
+//     } else {
+//         heading.dataset.sortDirection = "asc";
+//     }
 
-    // Indicate active sort
-    heading.classList.add("selected");
+//     setSort(category, sortBy, sortDir);
 
-    // Toggle direction in UI
-    if (sortDir === "asc") {
-        heading.dataset.sortDirection = "desc";
-    } else {
-        heading.dataset.sortDirection = "asc";
-    }
+//     displayUpdatedList();
+// }
 
-    setSort(category, sortBy, sortDir);
+// function setSort(category, sortBy, sortDir) {
+//     sortingBy = sortBy;
+//     sortingDirection = sortDir;
+//     // You may want to store the sorting settings separately for each category.
+// }
 
-    displayUpdatedList();
-}
+// function sortList(items) {
+//     const order = sortingDirection === "asc" ? 1 : -1;
+//     return items.sort((a, b) => (a[sortingBy] === b[sortingBy] ? 0 : a[sortingBy] > b[sortingBy] ? order : -order));
+// }
 
-function setSort(category, sortBy, sortDir) {
-    sortingBy = sortBy;
-    sortingDirection = sortDir;
-    // You may want to store the sorting settings separately for each category.
-}
+// document.getElementById('sort-artist').addEventListener('change', sortArtists);
+// document.getElementById('filter-artist').addEventListener('change', filterArtists);
 
-function sortList(items) {
-    const order = sortingDirection === "asc" ? 1 : -1;
-    return items.sort((a, b) => (a[sortingBy] === b[sortingBy] ? 0 : a[sortingBy] > b[sortingBy] ? order : -order));
-}
+// document.getElementById('search-form-artist').addEventListener('submit', function (e) {
+//   e.preventDefault();
+//   searchAndFilter('artist');
+// });
 
-document.getElementById('sort-artist').addEventListener('change', sortArtists);
-document.getElementById('filter-artist').addEventListener('change', filterArtists);
-
-document.getElementById('search-form-artist').addEventListener('submit', function (e) {
-  e.preventDefault();
-  searchAndFilter('artist');
-});
-
-
-export { selectSort, sortList };
+// export { selectSort, sortList };
