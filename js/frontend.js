@@ -135,6 +135,21 @@ function initializeViews() {
   populateDropdown("#create-song-album", albums);
 
   // initialize Filter-button
+  document.querySelectorAll("[data-action='sort']").forEach((button) =>
+    button.addEventListener("click", () => {
+      // before sorting - remove .selected from previous selected header
+      document.querySelector("[data-action=sort].selected")?.classList.remove("selected");
+
+      artistsLists.sort(button.dataset.sortBy, button.dataset.sortDirection);
+
+      // indicate selected sort header
+      button.classList.add("selected");
+      // indicate sort-direction on button
+      button.dataset.sortDirection = artistsLists.sortDir;
+    })
+  );
+
+  // initialize Filter-button
   document.querySelectorAll("[data-action='filter']").forEach((button) => {
     button.addEventListener("click", () => {
       const filterValue = button.dataset.filter;

@@ -14,25 +14,26 @@
     <main>
       <div>
         <!-- Sort-input -->
-        <label for="sort-artist">Sort by:</label>
-        <select name="sort-artist" id="sort-artist">
-          <option value="">Not selected</option>
-          <option value="name">Name</option>
-          <option value="birthdate">Birthdate</option>
-        </select>
-
-
-  <p class="filter-container">
-  Genres:
-  <button class="filter-button" data-action="filter" data-filter="*">All</button>
-  <button class="filter-button" data-action="filter" data-filter="Rap">Rap</button>
-  <button class="filter-button" data-action="filter" data-filter="Grime">Grime</button>
-  <button class="filter-button" data-action="filter" data-filter="Pop">Pop</button>
-  <button class="filter-button" data-action="filter" data-filter="K-pop">K-pop</button>
-  <button class="filter-button" data-action="filter" data-filter="Reggae">Reggae</button>
-</p>
-
-
+        <p>
+        <table id="list">
+        <thead>
+          <tr id="sorting">
+            <button data-action="sort" data-sort-direction="asc" data-sort-by="name">Name</button>
+            <button data-action="sort" data-sort-direction="asc" data-sort-by="birthdate">Birthdate</button>
+            </p>
+          </tr>
+        </thead>
+        
+        <p class="filter-container">
+          Genres:
+          <button class="filter-button" data-action="filter" data-filter="*">All</button>
+          <button class="filter-button" data-action="filter" data-filter="Rap">Rap</button>
+          <button class="filter-button" data-action="filter" data-filter="Grime">Grime</button>
+          <button class="filter-button" data-action="filter" data-filter="Pop">Pop</button>
+          <button class="filter-button" data-action="filter" data-filter="K-pop">K-pop</button>
+          <button class="filter-button" data-action="filter" data-filter="Reggae">Reggae</button>
+        </p>
+      </div>
 
       <div class="tab-search-wrapper">
         <div class="tab-buttons">

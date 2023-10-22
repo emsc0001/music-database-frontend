@@ -6,7 +6,7 @@ export default class SongRenderer extends ItemRenderer {
     const songs = this.item;
     const html = /*html*/ `
        <article class="grid-item">
-    <h1>${songs.title}</h1>
+    <h1>${songs.title} </h1>
     <div class="grid-info">
     <h2>${songs.releaseDate}</h2>
      <h3>${songs.length}</h3>
