@@ -142,17 +142,20 @@ function initializeViews() {
       if (filterValue !== "*") {
         filterArtistsByGenre(filterValue);
       } else {
-        // Handle the case where you want to show all artists
-        // You can implement this according to your needs.
-        // For example, clear the filter or show all artists.
-        filterArtistsByGenre(""); // Pass an empty string or modify this part as needed.
+        filterArtistsByGenre("");
       }
     });
   });
 }
 
 function filterArtistsByGenre(genre) {
-  artistsLists.filter("genres", genre);
+  if (genre === "") {
+    // If genre is empty, clear the filter and show all artists
+    artistsLists.filter("*", "*");
+  } else {
+    // Call the filter function on the artistsLists object
+    artistsLists.filter("genres", genre);
+  }
 }
 
 // initialize Search-Option
