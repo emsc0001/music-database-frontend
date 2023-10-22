@@ -54,10 +54,6 @@ async function artistApp() {
   initializeViews();
   initializeActionButtons();
 
-  document.addEventListener("DOMContentLoaded", () => {
-      const searchInput = document.getElementById("input-search-artist");
-      searchInput.addEventListener("input", handleSearch);
-  });
 }
 
 function initializeViews() {
@@ -217,6 +213,11 @@ initTabs();
 
 // ---Search----//
 
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("input-search-artist");
+    searchInput.addEventListener("input", handleSearch);
+});
+
 async function handleSearch() {
   // Get the search query from the input field
   const searchQuery = document.getElementById('input-search-artist').value;
@@ -229,7 +230,7 @@ async function handleSearch() {
 
     if (response.ok) {
       const data = await response.json();
-
+      console.log(data);
       updatedListArtist(data)
 
     } else {
