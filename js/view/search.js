@@ -1,4 +1,4 @@
-import { artists } from "../frontend.js";
+import { artists, updatedListArtist } from "../frontend.js";
 
 let searchTerm = "";
 let searchType = "all";

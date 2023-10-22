@@ -158,22 +158,7 @@ function filterArtistsByGenre(genre) {
   }
 }
 
-// initialize Search-Option
 
-function initializeActionButtons() {
-  document.querySelectorAll("[data-action='search']").forEach((field) => {
-    field.addEventListener("input", selectSearch);
-    field.addEventListener("keyup", selectSearch);
-    field.addEventListener("change", selectSearch);
-  });
-}
-
-async function updatedListArtist() {
-  const artists = await RESTAPI.getAllArtists();
-  const searchedList = searchList(artists);
-
-  artistsLists.render(searchedList);
-}
 
 // initialize Search-Option
 
