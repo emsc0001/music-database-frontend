@@ -10,7 +10,7 @@ import SongsRenderer from "./view/songsrenderer.js";
 import { ArtistCreateDialog, AlbumCreateDialog, SongCreateDialog } from "./view/createDialog.js";
 import { ArtistUpdateDialog, AlbumUpdateDialog, SongUpdateDialog } from "./view/updateDialog.js";
 import { ArtistDeleteDialog, AlbumDeleteDialog, SongDeleteDialog } from "./view/dialogDelete.js";
-import { selectSearch, searchList } from "./view/search.js";
+import { handleSearch} from "./view/search.js";
 
 import { initTabs } from "./tabs.js";
 
@@ -52,8 +52,6 @@ async function artistApp() {
 
   // create views
   initializeViews();
-  initializeActionButtons();
-
 }
 
 function initializeViews() {
@@ -192,14 +190,6 @@ function filterArtistsByGenre(genre) {
 
 // initialize Search-Option
 
-function initializeActionButtons() {
-  document.querySelectorAll("[data-action='search']").forEach((field) => {
-    field.addEventListener("input", selectSearch);
-    field.addEventListener("keyup", selectSearch);
-    field.addEventListener("change", selectSearch);
-  });
-}
-
 async function updatedListArtist(data) {
 
   const artists = data.artists
@@ -211,34 +201,12 @@ async function updatedListArtist(data) {
 initTabs();
 
 
-// ---Search----//
+// ---Search EventListener----//
 
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("input-search-artist");
     searchInput.addEventListener("input", handleSearch);
 });
-
-async function handleSearch() {
-  // Get the search query from the input field
-  const searchQuery = document.getElementById('input-search-artist').value;
-
-  // Send a request to the backend if the query is not empty
-  if (searchQuery) {
-
-    console.log(searchQuery);
-    const response = await fetch(`${endpoint}/search?q=${searchQuery}`);
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      updatedListArtist(data)
-
-    } else {
-      console.error('Search request failed');
-    }
-  } 
-}
-
 
 
 
@@ -418,5 +386,4 @@ export {
   updateSingleArtistProperty,
   updateSingleAlbumProperty,
   updateSingleSongProperty,
-  initializeActionButtons,
 };
