@@ -7,11 +7,12 @@ Dette repository indeholder en simpel musikdatabaseapp, der giver dig mulighed f
 - [Backend Repository](https://github.com/Abdiox/music-database)
 - [Deployet Backend](https://music-database.azurewebsites.net/)
 - [Frontend Repository](https://github.com/emsc0001/music-database-frontend)
-- [Deployet Frontend (GitHub Pages)](https://emsc0001.github.io/music-database-frontend/?fbclid=IwAR2rFZHkzk7ITrNGgjF4aWqp8s_JHQDah3KgTl9PNTfAUPk5JSUYXVGn-c8)
+- [Deployet Frontend (GitHub Pages)](https://emsc0001.github.io/music-database-frontend/)
 
 ### Deployede Versioner
 
 Frontend er åben på GitHub Pages og kan tilgås her:
 
 [Live Webapplikation på Azure](https://music-database.azurewebsites.net/)
+[Live Webapplikation på Github Pages](https://emsc0001.github.io/music-database-frontend/)
 
