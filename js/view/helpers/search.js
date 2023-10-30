@@ -1,5 +1,5 @@
 // import { updatedListArtist } from "../../frontend.js";
-import { updatedList } from "../../frontend.js";
+import { updatedList } from "../../main.js";
 import { endpoint } from "../../rest-service.js";
 import ArtistRenderer from "../renderer/artistsrenderer.js";
 import AlbumRenderer from "../renderer/albumsrenderer.js";

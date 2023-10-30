@@ -1,5 +1,5 @@
 import ItemRenderer from "./itemrenderer.js";
-import * as controller from "../../frontend.js";
+import * as controller from "../../main.js";
 
 export default class SongRenderer extends ItemRenderer {
     render() {
@@ -35,5 +35,4 @@ export default class SongRenderer extends ItemRenderer {
             }
         });
     }
-    
 }

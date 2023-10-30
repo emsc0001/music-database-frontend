@@ -1,5 +1,5 @@
 import ItemRenderer from "./itemrenderer.js";
-import * as controller from "../../frontend.js";
+import * as controller from "../../main.js";
 
 export default class ArtistRenderer extends ItemRenderer {
     render() {
@@ -43,5 +43,4 @@ export default class ArtistRenderer extends ItemRenderer {
             }
         });
     }
-    
 }

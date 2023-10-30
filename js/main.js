@@ -12,7 +12,7 @@ import { ArtistUpdateDialog, AlbumUpdateDialog, SongUpdateDialog } from "./view/
 import { ArtistDeleteDialog, AlbumDeleteDialog, SongDeleteDialog } from "./view/dialogs/dialogDelete.js";
 import { handleSearch } from "./view/helpers/search.js";
 
-import { initTabs } from "./tabs.js";
+import { initTabs } from "./view/tabs.js";
 
 endpoint;
 

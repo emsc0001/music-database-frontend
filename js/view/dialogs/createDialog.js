@@ -2,7 +2,7 @@ import Dialog from "./dialog.js";
 import artists from "../../model/artists.js";
 import albums from "../../model/albums.js";
 import songs from "../../model/songs.js";
-import * as controller from "../../frontend.js";
+import * as controller from "../../main.js";
 
 class ArtistCreateDialog extends Dialog {
     renderHTML() {
