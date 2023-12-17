@@ -19,7 +19,7 @@ export {
   deleteSong,
 };
 
-const endpoint = "http://localhost:3333";
+const endpoint = "http://https://music-database.azurewebsites.net/:3333";
 
 let allArtists = [];
 let allAlbums = [];
